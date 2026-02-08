@@ -1,0 +1,30 @@
+@use "_variables" as variables;
+
+/* Navigation bar */
+#main-navigation {
+  padding: 0.5rem 0;
+}
+.menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.menu li {
+  margin: 0 1rem;
+}
+.menu a {
+  color: variables.$navbarFontColor;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: variables.$navbarFontSize;
+  font-weight: bold;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.menu a:hover,
+.menu a:focus {
+  text-decoration: underline;
+  color: variables.$navbarFontColor;
+}

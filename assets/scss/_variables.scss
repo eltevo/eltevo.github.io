@@ -1,0 +1,33 @@
+/* Global page settings */
+$pageMax: 1200px;
+$pagePad: 20px;
+
+/*  Default colors  */
+$bgColor: rgba(5, 15, 25, 1.0);
+$baseColor: rgba(15, 25, 35, 1.0);
+$mainColor: rgba(255, 255, 255, 1.0);
+$linkColor: rgba(100, 150, 250, 1.0);
+
+/* Header settings */
+$headerFontSize: 3rem;
+
+/* Navbar settings */
+$navbarBgColor: none;
+$navbarFontColor: $mainColor;
+$navbarFontSize: 18px;
+
+/* Footer settings */
+$footerBgColor: $baseColor;
+$footerFontColor: $mainColor;
+$footerFontSize: 16px;
+$footerHeight: 50px;
+
+/* 404 page settings */
+$notFoundBgColor: rgba(0, 5, 10, 0.6);
+
+/* Regular page settings */
+$textFontSize: 18px;
+$textColor: $mainColor;
+$titleFont: 'Merriweather', serif;
+$textFont: 'Georgia', serif;
+$lineHeight: 1.5;

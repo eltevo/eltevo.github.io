@@ -1,0 +1,26 @@
+---
+layout: compress
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="{{ page.description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ page.title }}</title>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/default.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/navbar.css">
+    {{ page.head | default: layout.head }}
+
+    <!-- Icons -->
+    <link rel="icon" href="/assets/images/icons/icon.svg">
+    <link rel="mask-icon" href="/assets/images/icons/mask-icon.svg" color="#000000">
+    <link rel="apple-touch-icon" href="/assets/images/icons/apple-touch-icon.png">
+  </head>
+  <body>
+    {{ content }}
+    <script src="/assets/js/dereferrer.js"></script>
+  </body>
+</html>

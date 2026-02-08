@@ -1,0 +1,17 @@
+---
+layout: default
+head: |
+    <link rel="stylesheet" type="text/css" href="/assets/css/pages.css">
+---
+<div id="content">
+    {% include header.html %}
+    {% include navigation.html %}
+    <div id="document">
+        {{ content }}
+    </div>
+    {% include footer.html %}
+</div>
+<!-- MathJax 2.x config -->
+<script type="text/javascript" async
+    src="/assets/js/mathjax/mathjax-2-config.js">
+</script>

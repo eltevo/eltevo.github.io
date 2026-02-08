@@ -1,0 +1,43 @@
+@use "_variables" as variables;
+
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#notfound {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  padding: 2rem 3rem;
+  background-color: variables.$notFoundBgColor;
+}
+// Just to separate the styling from the flexbox settings
+#notfound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#notfound .main {
+  font-size: 3rem;
+  font-weight: bold;
+  color: variables.$mainColor;
+  margin: 0;
+}
+#notfound .info {
+  font-size: 1.5rem;
+  color: variables.$mainColor;
+  margin: 0.5rem 0 0 0;
+}
+#notfound .info a {
+  color: variables.$linkColor;
+}

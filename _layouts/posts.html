@@ -1,0 +1,35 @@
+---
+layout: pages
+head: |
+    <link rel="stylesheet" type="text/css" href="/assets/css/posts.css">
+---
+<header id="post-header">
+  <h1>{{ page.title }}</h1>
+  <h2><i>{{ page.subtitle }}</i></h2>
+</header>
+<aside id="post-info">
+  <!-- <span class="author"><i>by:</i> 
+    {% if page.author.size > 1 %}
+      {{ page.author | join: "; " }}
+    {% else %}
+      {{ page.author }}
+    {% endif %}
+  </span> -->
+  <div class="post-dates">
+    <span class="posted-date">
+      Posted &#8212 {{ page.date | date: '%F' }}
+    </span>
+    <span class="edited-date">
+      Last edited &#8212 {{ page.last_modified_at | date: '%F - %H:%M' }}
+    </span>
+  </div>
+</aside>
+
+<div id="post-content">
+  {{ content }}
+</div>
+<dialog class="image-zoom-dialog">
+  <img src="" alt=""> <!-- Populated by zoom.js -->
+  <form method="dialog"></form>
+</dialog>
+<script src="/assets/js/zoom.js"></script>
