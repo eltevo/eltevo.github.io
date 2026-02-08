@@ -11,6 +11,7 @@ highlighter: rouge
 plugins:
   - jekyll-feed
   # - jekyll-last-modified-at
+  - jekyll-sitemap
   - jekyll-seo-tag
 include:
   - _pages
