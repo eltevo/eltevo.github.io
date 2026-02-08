@@ -1,0 +1,46 @@
+title: "ELTE Virtual Observatory"
+description: "Cosmology research group at Eötvös Loránd University (ELTE) in Budapest, Hungary."
+url: "https://eltevo.github.io"
+baseurl: ""
+
+timezone: UTC
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  # - jekyll-last-modified-at
+  - jekyll-seo-tag
+include:
+  - _pages
+exclude:
+  - package-lock.json
+  - node_modules  # Jekyll ignores this directory by default
+  - vendor        # Jekyll ignores this directory by default
+  - Gemfile
+  - Gemfile.lock
+  - .gitignore
+  - README.md
+
+# Markdown processor settings
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+
+# Last-modified-at settings
+last-modified-at:
+    date-format: '%d-%b-%y'
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
