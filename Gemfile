@@ -10,7 +10,7 @@ group :jekyll_plugins do
   gem 'jekyll-compose', '~> 0.12'
   gem 'jekyll-postfiles', '~> 3.1'
   gem 'jekyll-seo-tag', '~> 2.8'
-  # gem "jekyll-last-modified-at"  # Get modification date for files
+  gem "jekyll-last-modified-at"  # Get modification date for files
 end
 
 # Windows compatibility
