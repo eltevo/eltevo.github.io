@@ -1,0 +1,8 @@
+.vscode
+.bundle
+vendor
+node_modules
+Gemfile.lock
+package-lock.json
+assets/css
+_site/

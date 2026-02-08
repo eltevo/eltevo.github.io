@@ -1,0 +1,24 @@
+{
+  "name": "eltevo-webpage",
+  "version": "1.0.0",
+  "description": "Webpage for the science of the ELTE Virtual Observatory",
+  "main": "index.js",
+  "scripts": {
+    "scss": "sass --verbose --watch assets/scss:assets/css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eltevo/eltevo.github.io.git"
+  },
+  "author": "ELTE Virtual Observatory",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eltevo/eltevo.github.io/issues"
+  },
+  "homepage": "https://github.com/eltevo/eltevo.github.io#readme",
+  "devDependencies": {
+    "sass": "^1.97.3",
+    "sass-loader": "^16.0.7"
+  }
+}
