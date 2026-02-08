@@ -1,5 +1,7 @@
 .vscode
 .bundle
+.jekyll-cache/
+.sass-cache/
 vendor
 node_modules
 Gemfile.lock
