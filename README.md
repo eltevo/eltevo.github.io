@@ -61,7 +61,7 @@ The `scss` script in [package.json](package.json) runs `sass --verbose --watch a
 
 2. Run Jekyll:
 ```sh
-bundle exec jekyll serve --drafts --livereload
+bundle exec jekyll serve --drafts
 ```
 
 Site will be available at `http://localhost:4000`. This command also runs in the foreground. You can stop it with `Ctrl+C` when done.
@@ -80,18 +80,65 @@ Site will be available at `http://localhost:4000`. This command also runs in the
 - Sass/SCSS sources: [assets/scss/](/assets/scss/)
 - Compiled CSS output: [assets/css/](/assets/css/)
 
+### Adding new projects
+To add a new project, create a new Markdown file in the `_projects/` directory with the following front matter:
+```yaml
+---
+layout: posts
+title: "Title of project here"
+featured: true
+status: active
+summary: "Short summary here."
+tags:
+  - tag 1
+  - tag 2
+  - ...
+links: # Optional, you can leave `code` and `paper` empty if not applicable
+  code: code link
+  paper:
+    - paper link 1
+    - paper link 2
+    - ...
+---
+```
+
+Projects will be automatically listed on the "Projects" page, and the `featured: true` flag will make them appear in the featured section on the homepage. You can also add project-specific content below the front matter, which will be rendered on the individual project page.
+
+### Adding new pages
+Regular pages reside in the `_pages/` directory. The current setup supports both Markdown and HTML files to be placed here. Pages use the `default` layout, which includes the common header, navigation bar, footer, and global styling. Each page must have the appropriate front matter at the top:
+
+```yaml
+---
+layout: default
+title: "Page Title"
+permalink: /page-url/ # Optional, but highly recommended for clean URLs
+head: # Optional, for any page-specific includes
+    - html tag in <head> 1
+    - html tag in <head> 2
+    - ...
+```
+
+### Adding new menu items
+To add a new menu item to the navigation bar, edit the `_includes/navbar.html` file. You can add a new `<li>` element with a link to the desired page and use the same logic to set the "active" class based on the current page URL. For example, to add a "People" menu item linking to `/people/`, you would add:
+```html
+<li>
+    <a href="{{ '/people/' | relative_url }}"{% if page.url == '/people/' or page.url contains '/people/' %} class="active"{% endif %}>People</a>
+</li>
+```
+Make sure to place it in the correct position within the `<ul>` to maintain the desired order of menu items.
+
 ---
 
 ## Deployment (`gh-pages` branch)
 
 **Important:** The site is built from **`gh-pages`**, not `master`. Keep `gh-pages` **clean**: it should contain **only the built site** (i.e., the contents of the `_site/` folder after running `bundle exec jekyll build`), and nothing else.
 
-### Workflow Overview
+### Workflow overview
 - Develop on `master`
 - Build locally
 - Deploy by replacing `gh-pages` with `_site/` contents
 
-1) On `master`, build the site:
+1) On `master`, build the site **without the `--drafts` flag** to exclude draft posts:
 ```sh
 bundle exec jekyll build
 ```
@@ -103,14 +150,15 @@ git checkout gh-pages
 
 3) Replace `gh-pages` contents with the latest build:
 ```sh
+git pull origin gh-pages # Ensure you have the latest changes
 git rm -rf .
-cp -a _site/* .
+cp -r _site/* .
 ```
 
 4) Commit and push:
 ```sh
 git add -A
-git commit -m "build $(date -Iseconds)"
+git commit -m "build $(date -Iseconds)" # Using ISO 8601 format for precise timestamps
 git push origin gh-pages
 ```
 
@@ -119,9 +167,9 @@ git push origin gh-pages
 git checkout master
 ```
 
----
+After the steps above, CSS files will be naturally missing and need to be recompiled on `master` to be included during development.
 
-## Notes
-
+### Important notes on deployment
+- Always ensure you are on the correct branch (`master` for development, `gh-pages` for deployment) before running build or deployment commands.
 - Built output is in `_site/` (ignored via [.gitignore](.gitignore)).
-- `gh-pages` should **only** contain built files, not source.
+- The `gh-pages` branch should **only** contain the built site. Do not commit source files or development changes to `gh-pages`.
