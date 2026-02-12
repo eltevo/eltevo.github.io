@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: projects
 title: "AvERA: Average Expansion Rate Approximation"
+published: false
 featured: true
 status: active
 summary: "Short summary here."

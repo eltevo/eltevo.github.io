@@ -41,7 +41,9 @@ collections:
 
 defaults:
   - scope:
-      path: ""
+      path:
+        - "_projects"
+        - "_drafts"
       type: projects
     values:
       layout: project

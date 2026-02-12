@@ -12,7 +12,13 @@ layout: compress
 
     <link rel="stylesheet" type="text/css" href="/assets/css/default.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/navbar.css">
-    {{ page.head | default: layout.head }}
+    <!-- Recursive, page-specific head content -->
+    {%- if layout.head -%}
+      {{ layout.head }}
+    {%- endif -%}
+    {%- if page.head -%}
+      {{ page.head }}
+    {%- endif -%}
 
     <!-- Icons -->
     <link rel="icon" href="/assets/images/icons/icon.svg">

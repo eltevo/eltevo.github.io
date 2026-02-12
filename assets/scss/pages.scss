@@ -9,9 +9,6 @@
   box-sizing: border-box;
 }
 
-p {
-  margin: 1em 0;
-}
 #document {
   text-align: justify;
   text-indent: 0;
@@ -21,8 +18,4 @@ p {
   line-height: variables.$lineHeight;
   padding-top: 30px;
   padding-bottom: variables.$footerHeight;
-}
-/* Automatic figure numbering on each page */
-#document #post-content {
-  counter-reset: figure-counter;
 }

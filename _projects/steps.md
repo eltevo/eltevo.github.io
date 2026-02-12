@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: projects
 title: "StePS: Stereographic Projection cosmological N-body Simulations"
+published: false
 featured: true
 status: active
 summary: "Short summary here."

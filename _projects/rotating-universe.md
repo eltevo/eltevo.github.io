@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: projects
 title: "Rotating Universe Simulations with StePS"
+published: false
 featured: true
 status: active
 summary: "Short summary here."

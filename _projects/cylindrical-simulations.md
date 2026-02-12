@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: projects
 title: "Cylindrical cosmological simulations with StePS"
+published: false
 featured: true
 status: active
 summary: "Cosmological N-body simulations in $S^1$x$R^2$ topological manifold."
