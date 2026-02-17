@@ -29,6 +29,7 @@ kramdown:
   input: GFM
   auto_ids: true
   syntax_highlighter: rouge
+  math_engine: mathjax
 
 # Last-modified-at settings
 last-modified-at:

@@ -35,7 +35,8 @@ window.MathJax = {
   MathZoom: {
     styles: {
       '#MathJax_Zoom': {
-        'background-color': '#040A13'
+        'color': 'rgba(255, 255, 255, 1.0)',
+        'background-color': 'rgba(15, 25, 35, 1.0)'
       }
     }
   }
