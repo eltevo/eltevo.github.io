@@ -1,11 +1,12 @@
 @use "_variables" as variables;
 
 #content {
+  min-height: 100vh;
   max-width: variables.$pageMax;
+  width: 100%;
   margin-inline: auto;
   padding-inline: variables.$pagePad;  /* safe padding on small screens */
   padding-block: 10px;
-  min-height: 100vh;
   box-sizing: border-box;
 }
 

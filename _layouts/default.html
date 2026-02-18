@@ -1,6 +1,7 @@
 ---
 layout: compress
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,13 +13,14 @@ layout: compress
 
     <link rel="stylesheet" type="text/css" href="/assets/css/default.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/navbar.css">
-    <!-- Recursive, page-specific head content -->
-    {%- if layout.head -%}
-      {{ layout.head }}
-    {%- endif -%}
-    {%- if page.head -%}
-      {{ page.head }}
-    {%- endif -%}
+    <!-- Accumulated head injections from layouts and pages -->
+    {%- assign chunks = content | split: "<!--HEAD_EXTRA" -%}
+    {%- for chunk in chunks -%}
+      {%- if chunk contains "HEAD_EXTRA-->" -%}
+        {%- assign head_fragment = chunk | split: "HEAD_EXTRA-->" | first -%}
+        {{ head_fragment }}
+      {%- endif -%}
+    {%- endfor -%}
 
     <!-- Icons -->
     <link rel="icon" href="/assets/images/icons/icon.svg">

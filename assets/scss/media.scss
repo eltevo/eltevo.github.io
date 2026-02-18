@@ -1,0 +1,81 @@
+@use "_variables" as variables;
+
+.image {
+  --max-columns: 3;
+  display: grid;
+  grid-template-columns: repeat(var(--max-columns), 1fr);
+  gap: 1em;
+  width: 100%;
+  margin-inline: auto;
+  padding-block: 20px 30px;
+}
+
+.image figcaption {
+  grid-column: 1 / -1; /* Caption spans full width */
+  text-align: center;
+  font-size: 0.8 * variables.$textFontSize;
+  margin-top: 1em;
+  
+  &::before {
+    counter-increment: figure-counter;
+    content: "Fig. " counter(figure-counter) ". ";
+    font-weight: bold;
+  }
+  
+  .img-source {
+    display: block;
+    font-size: 0.7 * variables.$textFontSize;
+    margin-top: 10px;
+  }
+}
+
+.image .zoom-trigger {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 45%;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: zoom-in;
+}
+.image .zoom-trigger:only-child {
+  flex: 0 0 100%;
+}
+.image .zoom-trigger img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
+}
+.image-zoom-dialog {
+  background: variables.$bgColor;
+  width: 90vw;
+  height: 100vh;
+  border: none;
+  padding: 0;
+  cursor: zoom-out;
+}
+.image-zoom-dialog img {
+  display: block; 
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+}
+/* Hack to prevent scrolling when the dialog is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+iframe {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  height: 400px;
+}
+@media (max-width: 600px) {
+  iframe {
+    width: 100%;
+    height: 250px;
+  }
+}

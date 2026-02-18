@@ -2,32 +2,34 @@
 layout: pages
 title: Projects
 permalink: /projects/
-head: |
-    <link rel="stylesheet" type="text/css" href="/assets/css/collections.css">
 ---
+
+<!--HEAD_EXTRA
+<link rel="stylesheet" href="/assets/css/blog.css">
+HEAD_EXTRA-->
 
 <h1>Flagship projects</h1>
 <div class="project-grid">
 {% assign featured = site.projects | where: "featured", true | sort: "title" %}
 {% for project in featured %}
-  <article class="project-card featured">
+  <article class="entry featured">
     <h3>
       <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
     </h3>
 
-    <p class="project-summary">
+    <p class="summary">
       {{ project.summary }}
     </p>
 
     {% if project.tags %}
-    <ul class="project-tags">
-      {% for tag in project.tags %}
+    <ul class="tags">
+      {% for tag in project.tags limit:4 %}
         <li>{{ tag }}</li>
       {% endfor %}
     </ul>
     {% endif %}
 
-    <div class="project-links">
+    <div class="links">
       <a href="{{ project.url | relative_url }}">Project page</a>
       {% if project.links.code %}
         · <a href="{{ project.links.code }}">Code</a>
@@ -53,24 +55,24 @@ head: |
 <div class="project-grid">
 {% assign others = site.projects | where: "featured", false | sort: "title" %}
 {% for project in others %}
-  <article class="project-card">
+  <article class="entry">
     <h3>
       <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
     </h3>
 
-    <p class="project-summary">
+    <p class="summary">
       {{ project.summary }}
     </p>
 
     {% if project.tags %}
-    <ul class="project-tags">
-      {% for tag in project.tags %}
+    <ul class="tags">
+      {% for tag in project.tags limit:4 %}
         <li>{{ tag }}</li>
       {% endfor %}
     </ul>
     {% endif %}
 
-    <div class="project-links">
+    <div class="links">
       <a href="{{ project.url | relative_url }}">Project page</a>
       {% if project.links.code %}
         · <a href="{{ project.links.code }}">Code</a>
