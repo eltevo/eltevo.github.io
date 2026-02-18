@@ -10,11 +10,15 @@ body {
   flex-direction: column;
   margin: 0;
   min-height: 100vh;
+  background:
+    linear-gradient(
+      rgba(variables.$bgColor, 0.85),
+      rgba(variables.$bgColor, 0.85)
+    ),
+    url('/assets/images/background/euclid-deep-field-south-16x.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: variables.$bgColor;
-  //background-image: url('/assets/images/background/background-portal-dark.webp');
 }
 
 footer {
