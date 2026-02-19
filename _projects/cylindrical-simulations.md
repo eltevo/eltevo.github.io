@@ -32,7 +32,10 @@ These files are the primary output of the Simulation. They are in GAGDET-compati
  
 <figure class="image">
   <button type="button" class="zoom-trigger">
-    <img src="/assets/images/projects/cylindrical-simulation/CylindricalExampleCenter.gif" alt="StePS simulation of structure formation in the new cylindrical topology.">
+    <video autoplay loop muted playsinline style="max-width: 100%; height: auto;" poster="/assets/images/projects/cylindrical-simulation/CylindricalExampleCenter.jpg">
+      <source src="/assets/images/projects/cylindrical-simulation/CylindricalExampleCenter.webm" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
   </button>
 </figure>
 
@@ -153,7 +156,7 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
       <td>\(750\,\mathrm{Mpc}\)</td>
       <td>\(200.0\,\mathrm{Mpc}\)</td>
       <td>\(2.0\cdot10^6\)</td>
-      <td>1.7GB</td>
+      <td>1.7&nbsp;GB</td>
       <td>
        <a href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCP2rPKW-3wQLKuYMMDb2LdAQqYTQf0BmLjZJQ_4FP8Ijg?e=d60tRM">
        Download
