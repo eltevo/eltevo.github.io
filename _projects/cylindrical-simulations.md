@@ -122,7 +122,7 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
       <th>\(R_{\mathrm{sim}}\)</th>
       <th>\(L_{z}\)</th>
       <th>\(N_{p}\)</th>
-      <th>Size</th>
+      <th>Uncompressed Size</th>
       <th>Download</th>
     </tr>
   </thead>
@@ -156,7 +156,7 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
       <td>\(750\,\mathrm{Mpc}\)</td>
       <td>\(200.0\,\mathrm{Mpc}\)</td>
       <td>\(2.0\cdot10^6\)</td>
-      <td>1.7&nbsp;GB</td>
+      <td>1730&nbsp;MB</td>
       <td>
        <a href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCP2rPKW-3wQLKuYMMDb2LdAQqYTQf0BmLjZJQ_4FP8Ijg?e=d60tRM">
        Download
