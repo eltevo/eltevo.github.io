@@ -97,7 +97,7 @@ These files contain all available information about the identified haloes. The h
 These [jupyter](https://jupyter.org/) notebooks contain examples of how to load, visualise, and analyse the provided simulation data. 
 
 **Mirrors**
-- helsinkifi-my.sharepoint.com: TBA
+- helsinkifi-my.sharepoint.com: [Download](https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQDupYMDLIydQo0EVBhcySmeAQKA7DdEPfH7kNjuERpCIDk?e=5fpamf)
 
 ## Companion simulations
 
