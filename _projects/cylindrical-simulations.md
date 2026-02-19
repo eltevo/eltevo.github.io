@@ -47,7 +47,7 @@ These files are the primary output of the Simulation. They are in GAGDET-compati
 
 <figure class="image">
   <button type="button" class="zoom-trigger">
-    <img src="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Sim_Pk_all.png" alt="Real-space dark matter power spectra of all available snapshots">
+    <img src="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Sim_Pk_all.svg" alt="Real-space dark matter power spectra of all available snapshots">
   </button>
 </figure>
 
@@ -73,13 +73,13 @@ These files contain all available information about the identified haloes. The h
 
 <figure class="image">
   <button type="button" class="zoom-trigger">
-    <img src="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Halos_0032.png" alt="SO overdensity halo catalogue at redshift 2.0">
+    <img src="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Halos_0032.svg" alt="SO overdensity halo catalogue at redshift 2.0">
   </button>
   <button type="button" class="zoom-trigger">
-    <img src="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Halos_0137.png" alt="SO overdensity halo catalogue at redshift 0.0">
+    <img src="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Halos_0137.svg" alt="SO overdensity halo catalogue at redshift 0.0">
   </button>
   <button type="button" class="zoom-trigger">
-    <img src="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Halo42.png" alt="Visualisation of halo #42 at redshift 0">
+    <img src="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Halo42.svg" alt="Visualisation of halo #42 at redshift 0">
   </button>
   <!-- <figcaption>Figure caption placeholder.</figcaption> -->
 </figure>
@@ -153,8 +153,12 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
       <td>\(750\,\mathrm{Mpc}\)</td>
       <td>\(200.0\,\mathrm{Mpc}\)</td>
       <td>\(2.0\cdot10^6\)</td>
-      <td>TBA</td>
-      <td>TBA</td>
+      <td>1.7GB</td>
+      <td>
+       <a href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCP2rPKW-3wQLKuYMMDb2LdAQqYTQf0BmLjZJQ_4FP8Ijg?e=d60tRM">
+       Download
+       </a>
+      </td>
     </tr>
   </tbody>
 </table>
