@@ -21,19 +21,19 @@
   padding-bottom: variables.$footerHeight;
 }
 
-a:link {
+#document a:link {
   text-decoration: none;
   color: variables.$linkColor;
 }
-a:visited {
+#document a:visited {
   text-decoration: none;
   color: variables.$linkColor;
 }
-a:hover {
+#document a:hover {
   text-decoration: underline;
   color: variables.$linkColor;
 }
-a:active {
+#document a:active {
   text-decoration: underline;
   color: variables.$linkColor;
 }

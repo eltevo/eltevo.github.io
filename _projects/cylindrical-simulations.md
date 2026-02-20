@@ -30,13 +30,11 @@ To demonstrate the new simulation method, we run a new cosmological $N$-body sim
 
 These files are the primary output of the Simulation. They are in GAGDET-compatible [HDF5](https://www.hdfgroup.org/solutions/hdf5/) format, and containing particle positions, velocities, masses, and IDs. Overall 138 snapshots were saved during the simulation. These can be visualized with [gadgetviewer](https://github.com/jchelly/gadgetviewer) or [topsy](https://github.com/pynbody/topsy). 
  
-<figure class="image">
-  <button type="button" class="zoom-trigger">
-    <video autoplay loop muted playsinline style="max-width: 100%; height: auto;" poster="/assets/images/projects/cylindrical-simulation/CylindricalExampleCenter.jpg">
-      <source src="/assets/images/projects/cylindrical-simulation/CylindricalExampleCenter.webm" type="video/webm">
-      Your browser does not support the video tag.
-    </video>
-  </button>
+<figure class="image" style="display: flex; justify-content: center;">
+  <video autoplay loop muted playsinline style="width: 100%; height: auto;" poster="">
+    <source src="/assets/images/projects/cylindrical-simulation/CylindricalExampleCenter.webm" type="video/webm">
+    Your browser does not support the video tag.
+  </video>
 </figure>
 
 **Uncompressed size:** 1.5 GB / snapshot
@@ -158,8 +156,8 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
       <td>\(2.0\cdot10^6\)</td>
       <td>1730&nbsp;MB</td>
       <td>
-       <a href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCP2rPKW-3wQLKuYMMDb2LdAQqYTQf0BmLjZJQ_4FP8Ijg?e=d60tRM">
-       Download
+        <a href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCP2rPKW-3wQLKuYMMDb2LdAQqYTQf0BmLjZJQ_4FP8Ijg?e=d60tRM">
+          Download
        </a>
       </td>
     </tr>
