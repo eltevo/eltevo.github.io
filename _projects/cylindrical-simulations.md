@@ -41,6 +41,7 @@ These files are the primary output of the Simulation. They are in GAGDET-compati
 
 **Mirrors**
 - ELTE Kooplex: TBA
+- helsinkifi-my.sharepoint.com (only 4 snapshots): [Download](https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgCmwFcqlHBiTZ-Jdp1bfwV8AQq4NnzWcJJwmDV4h4-rn6o?e=GJVG1a)
 
 ---
 
@@ -88,8 +89,8 @@ These files contain all available information about the identified haloes. The h
 **Mirrors**
 - ELTE Kooplex (ASCII): TBA
 - ELTE Kooplex (HDF5 + particles): TBA
-- helsinkifi-my.sharepoint.com (ASCII): TBA
-- helsinkifi-my.sharepoint.com (HDF5 + particles): TBA
+- helsinkifi-my.sharepoint.com (ASCII): [Download](https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgBQLQnqx65HQpL1rxNQcSkSAVktbtJeXylQ8VSCqGyjyiU?e=rdBary)
+- helsinkifi-my.sharepoint.com (HDF5 + particles): [Download](https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgATNo6G7U9UQIrlCrYaEt5hAcOt-QUn60tAH2EX2MpUfIE?e=D1nXgM)
 
 ---
 
