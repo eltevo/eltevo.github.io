@@ -60,17 +60,44 @@ The isotropic $P(k)$ power spectrum of the dark matter density field is a standa
 - helsinkifi-my.sharepoint.com: [Download](https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCfdHpygkwOQJM4R0hAF0a9ASukMk5devFf7r6rWDY6O6k?e=Sj8kEo)
 
 ---
- 
+
 ### Halo Catalogues
 
 These files contain all available information about the identified haloes. The haloes were identified with our own StePS_HF Spherical Overdensity (SO) halo finder code. Two formats are available to download:
 
-1. <details>
-   <summary><strong>ASCII catalogue fields (click to expand)</strong></summary>
-   <code>1-ID 2-Npart 3-VolResolved 4-Mvir 5-X 6-Y 7-Z 8-Rvir 9-Vvir_X 10-Vvir_Y 11-Vvir_Z 12-VRMSvir 13-Vcircvir 14-VMax 15-Rs_klypin 16-Jvir_X 17-Jvir_Y 18-Jvir_Z 19-Spin_Bullock 20-M200b 21-R200b 22-V200b_X 23-V200b_Y 24-V200b_Z 25-VRMS200b 26-Vcirc200b 27-J200b_X 28-J200b_Y 29-J200b_Z 30-M200c 31-R200c 32-V200c_X 33-V200c_Y 34-V200c_Z 35-VRMS200c 36-Vcirc200c 37-J200c_X 38-J200c_Y 39-J200c_Z 40-M500c 41-R500c 42-V500c_X 43-V500c_Y 44-V500c_Z 45-VRMS500c 46-Vcirc500c 47-J500c_X 48-J500c_Y 49-J500c_Z 50-M1000c 51-R1000c 52-V1000c_X 53-V1000c_Y 54-V1000c_Z 55-VRMS1000c 56-Vcirc1000c 57-J1000c_X 58-J1000c_Y 59-J1000c_Z 60-M2500c 61-R2500c 62-V2500c_X 63-V2500c_Y 64-V2500c_Z 65-VRMS2500c 66-Vcirc2500c 67-J2500c_X 68-J2500c_Y 69-J2500c_Z</code>
-   </details>
-
-2. **Binary HDF5** containing the same information as the ASCII catalogues, plus particle data (IDs, coordinates, velocities, masses) within $r < 1.5\cdot R_{\mathrm{vir}}$.
+<ol class="catalogue-formats">
+  <li> <details>
+    <summary><strong>ASCII</strong> &mdash; one halo per row (click to expand)</summary>
+    <nav class="field-nav">
+    {% for group in site.data.halo-catalogue.groups %}
+      <a href="#{{ group.id }}">{{ group.label }}</a>
+    {% endfor %}
+    </nav>
+    {% for group in site.data.halo-catalogue.groups %}
+    <section id="{{ group.id }}" class="field-group">
+      <h4>{{ group.label }}</h4>
+      <p>{{ group.description }}</p>
+      <table>
+        <thead>
+          <tr><th>Column index</th><th>Field</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          {% for field in group.fields %}
+          <tr>
+            <td>{{ field.col }}</td>
+            <td><code>{{ field.name }}</code></td>
+            <td>{{ field.desc }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    {% endfor %}
+  </details></li>
+  <li>
+    <strong>Binary HDF5</strong> &mdash; containing the same information as the ASCII catalogues, plus particle data (IDs, coordinates, velocities, masses) within \(r < 1.5\cdot R_{\mathrm{vir}}\).
+  </li>
+</ol>
 
 
 <figure class="image">

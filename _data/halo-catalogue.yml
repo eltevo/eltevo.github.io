@@ -1,0 +1,104 @@
+groups:
+  - id: identity
+    label: "Identity and basics"
+    description: "Halo identification and fundamental properties."
+    fields:
+      - { col: 1,  name: "ID",            desc: "Unique halo identifier" }
+      - { col: 2,  name: "Npart",         desc: "Number of particles" }
+      - { col: 3,  name: "VolResolved",   desc: "Volume-resolved flag" }
+      - { col: 4,  name: "Mvir",          desc: "Virial mass" }
+
+  - id: virial
+    label: "Virial sphere"
+    description: "Properties measured within the virial radius. Also contains \\(V_{\\rm Max}\\) and the Klypin scale radius, which are unique to this group."
+    fields:
+      - { col: 5,  name: "X",             desc: "Position X" }
+      - { col: 6,  name: "Y",             desc: "Position Y" }
+      - { col: 7,  name: "Z",             desc: "Position Z" }
+      - { col: 8,  name: "Rvir",          desc: "Virial radius" }
+      - { col: 9,  name: "Vvir_X",        desc: "Velocity X" }
+      - { col: 10, name: "Vvir_Y",        desc: "Velocity Y" }
+      - { col: 11, name: "Vvir_Z",        desc: "Velocity Z" }
+      - { col: 12, name: "VRMSvir",       desc: "RMS velocity dispersion" }
+      - { col: 13, name: "Vcircvir",      desc: "Circular velocity" }
+      - { col: 14, name: "VMax",          desc: "Maximum circular velocity" }
+      - { col: 15, name: "Rs_klypin",     desc: "Scale radius (Klypin definition)" }
+      - { col: 16, name: "Jvir_X",        desc: "Angular momentum X" }
+      - { col: 17, name: "Jvir_Y",        desc: "Angular momentum Y" }
+      - { col: 18, name: "Jvir_Z",        desc: "Angular momentum Z" }
+      - { col: 19, name: "Spin_Bullock",  desc: "Spin parameter (Bullock et al.)" }
+
+  - id: m200b
+    label: "200b"
+    description: "Properties within R200b &mdash; radius enclosing mean density 200 times the background density."
+    fields:
+      - { col: 20, name: "M200b",         desc: "Mass" }
+      - { col: 21, name: "R200b",         desc: "Radius" }
+      - { col: 22, name: "V200b_X",       desc: "Velocity X" }
+      - { col: 23, name: "V200b_Y",       desc: "Velocity Y" }
+      - { col: 24, name: "V200b_Z",       desc: "Velocity Z" }
+      - { col: 25, name: "VRMS200b",      desc: "RMS velocity dispersion" }
+      - { col: 26, name: "Vcirc200b",     desc: "Circular velocity" }
+      - { col: 27, name: "J200b_X",       desc: "Angular momentum X" }
+      - { col: 28, name: "J200b_Y",       desc: "Angular momentum Y" }
+      - { col: 29, name: "J200b_Z",       desc: "Angular momentum Z" }
+
+  - id: m200c
+    label: "200c"
+    description: "Properties within R200c &mdash; radius enclosing mean density 200 times the critical density."
+    fields:
+      - { col: 30, name: "M200c",         desc: "Mass" }
+      - { col: 31, name: "R200c",         desc: "Radius" }
+      - { col: 32, name: "V200c_X",       desc: "Velocity X" }
+      - { col: 33, name: "V200c_Y",       desc: "Velocity Y" }
+      - { col: 34, name: "V200c_Z",       desc: "Velocity Z" }
+      - { col: 35, name: "VRMS200c",      desc: "RMS velocity dispersion" }
+      - { col: 36, name: "Vcirc200c",     desc: "Circular velocity" }
+      - { col: 37, name: "J200c_X",       desc: "Angular momentum X" }
+      - { col: 38, name: "J200c_Y",       desc: "Angular momentum Y" }
+      - { col: 39, name: "J200c_Z",       desc: "Angular momentum Z" }
+
+  - id: m500c
+    label: "500c"
+    description: "Properties within R500c &mdash; radius enclosing mean density 500 times the critical density."
+    fields:
+      - { col: 40, name: "M500c",         desc: "Mass" }
+      - { col: 41, name: "R500c",         desc: "Radius" }
+      - { col: 42, name: "V500c_X",       desc: "Velocity X" }
+      - { col: 43, name: "V500c_Y",       desc: "Velocity Y" }
+      - { col: 44, name: "V500c_Z",       desc: "Velocity Z" }
+      - { col: 45, name: "VRMS500c",      desc: "RMS velocity dispersion" }
+      - { col: 46, name: "Vcirc500c",     desc: "Circular velocity" }
+      - { col: 47, name: "J500c_X",       desc: "Angular momentum X" }
+      - { col: 48, name: "J500c_Y",       desc: "Angular momentum Y" }
+      - { col: 49, name: "J500c_Z",       desc: "Angular momentum Z" }
+
+  - id: m1000c
+    label: "1000c"
+    description: "Properties within R1000c &mdash; radius enclosing mean density 1000 times the critical density."
+    fields:
+      - { col: 50, name: "M1000c",        desc: "Mass" }
+      - { col: 51, name: "R1000c",        desc: "Radius" }
+      - { col: 52, name: "V1000c_X",      desc: "Velocity X" }
+      - { col: 53, name: "V1000c_Y",      desc: "Velocity Y" }
+      - { col: 54, name: "V1000c_Z",      desc: "Velocity Z" }
+      - { col: 55, name: "VRMS1000c",     desc: "RMS velocity dispersion" }
+      - { col: 56, name: "Vcirc1000c",    desc: "Circular velocity" }
+      - { col: 57, name: "J1000c_X",      desc: "Angular momentum X" }
+      - { col: 58, name: "J1000c_Y",      desc: "Angular momentum Y" }
+      - { col: 59, name: "J1000c_Z",      desc: "Angular momentum Z" }
+
+  - id: m2500c
+    label: "2500c"
+    description: "Properties within R2500c &mdash; radius enclosing mean density 2500 times the critical density."
+    fields:
+      - { col: 60, name: "M2500c",        desc: "Mass" }
+      - { col: 61, name: "R2500c",        desc: "Radius" }
+      - { col: 62, name: "V2500c_X",      desc: "Velocity X" }
+      - { col: 63, name: "V2500c_Y",      desc: "Velocity Y" }
+      - { col: 64, name: "V2500c_Z",      desc: "Velocity Z" }
+      - { col: 65, name: "VRMS2500c",     desc: "RMS velocity dispersion" }
+      - { col: 66, name: "Vcirc2500c",    desc: "Circular velocity" }
+      - { col: 67, name: "J2500c_X",      desc: "Angular momentum X" }
+      - { col: 68, name: "J2500c_Y",      desc: "Angular momentum Y" }
+      - { col: 69, name: "J2500c_Z",      desc: "Angular momentum Z" }
