@@ -1,0 +1,64 @@
+/* Global page settings */
+/*  Default colors  */
+/* Header settings */
+/* Navbar settings */
+/* Footer settings */
+/* 404 page settings */
+/* Regular page settings */
+/* Automatic figure numbering on each page */
+#post-content {
+  counter-reset: figure-counter;
+}
+
+header#post-header {
+  font-family: "Merriweather", serif, sans-serif;
+  padding-bottom: 30px;
+}
+
+#post-header h1 {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+#post-header h2 {
+  font-weight: normal;
+  margin-top: 0;
+}
+
+aside#post-info {
+  display: flex;
+  align-items: baseline;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-family: "Merriweather", serif, sans-serif;
+  justify-content: space-between;
+  padding: 10px 0px 10px;
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+#post-info .author {
+  flex: 1 1 50%;
+  font-size: 22px;
+  text-align: left;
+  margin-left: 10px;
+}
+
+#post-info .post-dates {
+  flex: 1 1 50%;
+  display: inline-block;
+  text-align: right;
+  margin-right: 10px;
+}
+
+#post-info .posted-date {
+  display: block;
+  font-size: 22px;
+}
+
+#post-info .edited-date {
+  display: block;
+  font-size: 20px;
+}
+
+/*# sourceMappingURL=projects.css.map */

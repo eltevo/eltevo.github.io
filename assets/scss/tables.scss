@@ -1,0 +1,112 @@
+@use "_variables" as variables;
+
+/* Styles for tables and related components */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(1.05rem, 1.2vw + 0.9rem, 1.35rem);
+  table-layout: fixed;
+}
+
+@media (max-width: 720px) {
+  table {
+    min-width: 720px;
+  }
+}
+
+table thead {
+  border-bottom: 2px solid #ccc;
+}
+
+table th, table td {
+  padding: 0.6rem 0.8rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+table th.col-run,
+table td:first-child {
+  text-align: left;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+table tbody tr:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+table .col-download a {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Specific column widths for the simulation table */
+table.sim-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.sim-table col.col-run      { width: 18%; }
+table.sim-table col.col-r        { width: 16%; }
+table.sim-table col.col-lz       { width: 16%; }
+table.sim-table col.col-np       { width: 16%; }
+table.sim-table col.col-size     { width: 14%; }
+table.sim-table col.col-download { width: 20%; }
+
+table.sim-table th:first-child,
+table.sim-table td:first-child {
+  text-align: left;
+}
+
+table.sim-table td:last-child,
+table.sim-table th:last-child {
+  overflow-wrap: anywhere;
+}
+
+/* Table to display parameters, catalogue fields, etc. */
+.field-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.field-nav a {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+
+.field-nav a:hover {
+  background: #f0f0f0;
+}
+
+.field-group {
+  margin-bottom: 3rem;
+}
+
+.field-group th,
+.field-group td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.field-group th:first-child {
+  text-align: center;
+}
+
+.field-group td:first-child {
+  color: #ddd;
+  width: 3rem;
+  text-align: center;
+}

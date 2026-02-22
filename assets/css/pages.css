@@ -1,0 +1,49 @@
+/* Global page settings */
+/*  Default colors  */
+/* Header settings */
+/* Navbar settings */
+/* Footer settings */
+/* 404 page settings */
+/* Regular page settings */
+#content {
+  min-height: 100vh;
+  max-width: 1200px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 20px; /* safe padding on small screens */
+  padding-block: 10px;
+  box-sizing: border-box;
+}
+
+#document {
+  text-align: justify;
+  text-indent: 0;
+  font-size: 24px;
+  font-family: "Georgia", serif;
+  color: rgb(255, 255, 255);
+  line-height: 1.5;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+#document a:link {
+  text-decoration: none;
+  color: rgb(100, 150, 250);
+}
+
+#document a:visited {
+  text-decoration: none;
+  color: rgb(100, 150, 250);
+}
+
+#document a:hover {
+  text-decoration: underline;
+  color: rgb(100, 150, 250);
+}
+
+#document a:active {
+  text-decoration: underline;
+  color: rgb(100, 150, 250);
+}
+
+/*# sourceMappingURL=pages.css.map */

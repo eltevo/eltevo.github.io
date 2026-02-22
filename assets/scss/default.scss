@@ -1,0 +1,63 @@
+@use "_variables" as variables;
+
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      rgba(variables.$bgColor, 0.85),
+      rgba(variables.$bgColor, 0.85)
+    ),
+    url('/assets/images/background/euclid-deep-field-south-16x.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  inset-inline: 0;
+  width: 100%;
+  height: variables.$footerHeight;
+  line-height: variables.$footerHeight;
+  color: variables.$footerFontColor;
+  text-align: center;
+  font-size: variables.$footerFontSize;
+  font-weight: bold;
+}
+
+#header-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0 20px 0;
+  font-size: variables.$headerFontSize;
+  text-align: center;
+  box-sizing: border-box; /* Ensure padding is included in the total width */
+}
+#header-container a:link {
+  text-decoration: none;
+  color: variables.$mainColor;
+}
+#header-container a:visited {
+  text-decoration: none;
+  color: variables.$mainColor;
+}
+#header-container a:hover {
+  text-decoration: underline;
+}
+#header-container a:active {
+  text-decoration: underline;
+  color: variables.$mainColor;
+}
+
+p {
+  margin: 1em 0;
+}

@@ -1,0 +1,41 @@
+/* Global page settings */
+/*  Default colors  */
+/* Header settings */
+/* Navbar settings */
+/* Footer settings */
+/* 404 page settings */
+/* Regular page settings */
+/* Navigation bar */
+#main-navigation {
+  padding: 0.5rem 0;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 0 1rem;
+}
+
+.menu a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu a:hover,
+.menu a:focus {
+  text-decoration: underline;
+  color: rgb(255, 255, 255);
+}
+
+/*# sourceMappingURL=navbar.css.map */

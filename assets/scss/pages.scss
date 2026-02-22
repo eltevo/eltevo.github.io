@@ -1,0 +1,39 @@
+@use "_variables" as variables;
+
+#content {
+  min-height: 100vh;
+  max-width: variables.$pageMax;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: variables.$pagePad;  /* safe padding on small screens */
+  padding-block: 10px;
+  box-sizing: border-box;
+}
+
+#document {
+  text-align: justify;
+  text-indent: 0;
+  font-size: variables.$textFontSize;
+  font-family: variables.$textFont;
+  color: variables.$textColor;
+  line-height: variables.$lineHeight;
+  padding-top: 30px;
+  padding-bottom: variables.$footerHeight;
+}
+
+#document a:link {
+  text-decoration: none;
+  color: variables.$linkColor;
+}
+#document a:visited {
+  text-decoration: none;
+  color: variables.$linkColor;
+}
+#document a:hover {
+  text-decoration: underline;
+  color: variables.$linkColor;
+}
+#document a:active {
+  text-decoration: underline;
+  color: variables.$linkColor;
+}

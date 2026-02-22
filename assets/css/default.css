@@ -1,0 +1,70 @@
+/* Global page settings */
+/*  Default colors  */
+/* Header settings */
+/* Navbar settings */
+/* Footer settings */
+/* 404 page settings */
+/* Regular page settings */
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(rgba(5, 15, 25, 0.85), rgba(5, 15, 25, 0.85)), url("/assets/images/background/euclid-deep-field-south-16x.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  inset-inline: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#header-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0 20px 0;
+  font-size: 3rem;
+  text-align: center;
+  box-sizing: border-box; /* Ensure padding is included in the total width */
+}
+
+#header-container a:link {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+#header-container a:visited {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+#header-container a:hover {
+  text-decoration: underline;
+}
+
+#header-container a:active {
+  text-decoration: underline;
+  color: rgb(255, 255, 255);
+}
+
+p {
+  margin: 1em 0;
+}
+
+/*# sourceMappingURL=default.css.map */
