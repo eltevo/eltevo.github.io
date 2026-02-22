@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "scss": "sass --verbose --watch assets/scss:assets/css",
+    "scss:build": "sass --verbose assets/scss:assets/css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

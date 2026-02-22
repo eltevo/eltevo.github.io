@@ -40,7 +40,7 @@ gem install bundler
 From the repository root:
 
 ```sh
-bundle config set --local path "vendor/bundle"
+bundle config set --local path 'vendor/bundle'
 bundle install
 npm install
 ```
@@ -48,6 +48,12 @@ npm install
 This installs Ruby gems into `vendor/bundle/` (project-local) and Node packages into `node_modules/`. Both are gitignored.
 
 > Run all `bundle` and `npm` commands **from the project directory**.
+
+Create a worktree for the `gh-pages` branch in the `_deploy` directory (only needs to be done once):
+```sh
+git worktree add --orphan -b gh-pages _deploy
+touch _deploy/.nojekyll
+```
 
 ---
 
@@ -61,7 +67,7 @@ The `scss` script in [package.json](package.json) runs `sass --verbose --watch a
 
 2. Run Jekyll:
 ```sh
-bundle exec jekyll serve --drafts
+bundle exec jekyll serve --unpublished
 ```
 
 Site will be available at `http://localhost:4000`. This command also runs in the foreground. You can stop it with `Ctrl+C` when done.
@@ -86,7 +92,8 @@ To add a new project, create a new Markdown file in the `_projects/` directory w
 ---
 layout: posts
 title: "Title of project here"
-featured: true
+featured: false  # Set to true if you want it to appear among flagship projects
+published: true  # Set to false if you want to keep it as a draft and not have it appear on the site yet
 status: active
 summary: "Short summary here."
 tags:
@@ -111,8 +118,8 @@ Regular pages reside in the `_pages/` directory. The current setup supports both
 ---
 layout: default
 title: "Page Title"
-permalink: /page-url/ # Optional, but highly recommended for clean URLs
-head: # Optional, for any page-specific includes
+permalink: /page-url/  # Optional, but highly recommended for clean URLs
+head:  # Optional, for any page-specific includes
     - html tag in <head> 1
     - html tag in <head> 2
     - ...
@@ -131,40 +138,34 @@ Make sure to place it in the correct position within the `<ul>` to maintain the 
 
 ## Deployment (`gh-pages` branch)
 
-**Important:** The site is built from **`gh-pages`**, not `master`. Keep `gh-pages` **clean**: it should contain **only the built site** (i.e., the contents of the `_site/` folder after running `bundle exec jekyll build`), and nothing else.
+> **Important:** The site is built from **`gh-pages`**, not `master`. Keep `gh-pages` **clean**: it should contain **only the built site** (i.e., the contents of the `_site/` folder after running `bundle exec jekyll build` on the `master` branch), and nothing else.
 
 ### Workflow overview
-- Develop on `master`
-- Build locally
-- Deploy by replacing `gh-pages` with `_site/` contents
+> **Important**: Ensure you already have the `gh-pages` worktree set up in `_deploy/` as described in the *Project setup* section above. This only needs to be done once.
 
-1) On `master`, build the site **without the `--drafts` flag** to exclude draft posts:
+1) On `master`, compile the CSS and build the site **without the `--unpublished` flag** to exclude draft posts:
 ```sh
+npm run scss:build
 bundle exec jekyll build
 ```
-
-2) Switch to `gh-pages`:
+2) Navigate to the `gh-pages` branch using the worktree that resides in the special `_deploy` directory:
 ```sh
-git checkout gh-pages
+cd _deploy
 ```
-
-3) Replace `gh-pages` contents with the latest build:
+3) Replace contents of the `gh-pages` worktree with the latest build:
 ```sh
-git pull origin gh-pages # Ensure you have the latest changes
-git rm -rf .
-cp -r _site/* .
+git pull origin gh-pages  # Ensure you have the latest changes
+rsync -av --delete ../_site/ . --exclude .git --exclude .nojekyll
 ```
-
 4) Commit and push:
 ```sh
 git add -A
 git commit -m "build $(date -Iseconds)" # Using ISO 8601 format for precise timestamps
 git push origin gh-pages
 ```
-
 5) Switch back to `master` to continue development:
 ```sh
-git checkout master
+cd -
 ```
 
 After the steps above, CSS files will be naturally missing and need to be recompiled on `master` to be included during development.
