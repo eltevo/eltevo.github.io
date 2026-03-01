@@ -28,7 +28,7 @@ To demonstrate the new simulation method, we run a new cosmological $N$-body sim
  
 ### Snapshots
 
-These files are the primary output of the Simulation. They are in GAGDET-compatible [HDF5](https://www.hdfgroup.org/solutions/hdf5/) format, and containing particle positions, velocities, masses, and IDs. Overall 138 snapshots were saved during the simulation. These can be visualized with [gadgetviewer](https://github.com/jchelly/gadgetviewer) or [topsy](https://github.com/pynbody/topsy). 
+These files are the primary output of the Simulation. They are in GAGDET-compatible [HDF5](https://www.hdfgroup.org/solutions/hdf5/) format, and containing particle positions, velocities, masses, and IDs. Overall 138 snapshots were saved during the simulation. These can be visualized with [gadgetviewer](https://github.com/jchelly/gadgetviewer) or [topsy](https://github.com/pynbody/topsy).
  
 <figure class="image" style="display: flex; justify-content: center;">
   <video autoplay loop muted playsinline style="width: 100%; height: auto;" poster="">
@@ -95,10 +95,9 @@ These files contain all available information about the identified haloes. The h
     {% endfor %}
   </details></li>
   <li>
-    <strong>Binary HDF5</strong> &mdash; containing the same information as the ASCII catalogues, plus particle data (IDs, coordinates, velocities, masses) within \(r < 1.5\cdot R_{\mathrm{vir}}\).
+    <strong>Binary HDF5</strong> &mdash; containing the same information as the ASCII catalogues, plus particle data (IDs, coordinates, velocities, masses) within $r < 1.5\cdot R_{\mathrm{vir}}$.
   </li>
 </ol>
-
 
 <figure class="image">
   <button type="button" class="zoom-trigger">
@@ -110,7 +109,7 @@ These files contain all available information about the identified haloes. The h
   <button type="button" class="zoom-trigger">
     <img src="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Halo42.svg" alt="Visualisation of halo #42 at redshift 0">
   </button>
-  <!-- <figcaption>Figure caption placeholder.</figcaption> -->
+  <!-- <figcaption>TODO: Figure caption does not work currently.</figcaption> -->
 </figure>
 
 **Mirrors**
@@ -135,19 +134,19 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
 <div class="table-wrapper">
 <table class="sim-table">
   <colgroup>
-    <col class="col-run">
-    <col class="col-r">
-    <col class="col-lz">
-    <col class="col-np">
-    <col class="col-size">
-    <col class="col-download">
+    <col style="width: 18%;">  <!-- Run name -->
+    <col style="width: 16%;">  <!-- R_sim -->
+    <col style="width: 16%;">  <!-- L_z -->
+    <col style="width: 16%;">  <!-- N_p -->
+    <col style="width: 14%;">  <!-- Uncompressed Size -->
+    <col style="width: 20%;">  <!-- Download -->
   </colgroup>
   <thead>
     <tr>
       <th>Run</th>
-      <th>\(R_{\mathrm{sim}}\)</th>
-      <th>\(L_{z}\)</th>
-      <th>\(N_{p}\)</th>
+      <th>$R_{\mathrm{sim}}$</th>
+      <th>$L_{z}$</th>
+      <th>$N_{p}$</th>
       <th>Uncompressed Size</th>
       <th>Download</th>
     </tr>
@@ -155,9 +154,9 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
   <tbody>
     <tr>
       <td>Small #1</td>
-      <td>\(750\,\mathrm{Mpc}\)</td>
-      <td>\(50.0\,\mathrm{Mpc}\)</td>
-      <td>\(5.0\cdot10^5\)</td>
+      <td>$750\,\mathrm{Mpc}$</td>
+      <td>$50.0\,\mathrm{Mpc}$</td>
+      <td>$5.0\cdot10^5$</td>
       <td>441&nbsp;MB</td>
       <td>
         <a href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQDa4_cUufnTRoDVMhIuzq6sAV3KJ8Kv4Jyd3bsoYkz8XvM?e=52UEaj">
@@ -167,9 +166,9 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
     </tr>
     <tr>
       <td>Small #2</td>
-      <td>\(750\,\mathrm{Mpc}\)</td>
-      <td>\(100.0\,\mathrm{Mpc}\)</td>
-      <td>\(1.0\cdot10^6\)</td>
+      <td>$750\,\mathrm{Mpc}$</td>
+      <td>$100.0\,\mathrm{Mpc}$</td>
+      <td>$1.0\cdot10^6$</td>
       <td>840&nbsp;MB</td>
       <td>
         <a href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCs_FApczY7Q5lif0NxWDcFAYx2TUktwIeDCwHXJdJFZNM?e=3ousSP">
@@ -179,9 +178,9 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
     </tr>
     <tr>
       <td>Small #3</td>
-      <td>\(750\,\mathrm{Mpc}\)</td>
-      <td>\(200.0\,\mathrm{Mpc}\)</td>
-      <td>\(2.0\cdot10^6\)</td>
+      <td>$750\,\mathrm{Mpc}$</td>
+      <td>$200.0\,\mathrm{Mpc}$</td>
+      <td>$2.0\cdot10^6$</td>
       <td>1730&nbsp;MB</td>
       <td>
         <a href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCP2rPKW-3wQLKuYMMDb2LdAQqYTQf0BmLjZJQ_4FP8Ijg?e=d60tRM">

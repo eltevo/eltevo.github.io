@@ -5,7 +5,7 @@ groups:
     fields:
       - { col: 1,  name: "ID",            desc: "Unique halo identifier" }
       - { col: 2,  name: "Npart",         desc: "Number of particles" }
-      - { col: 3,  name: "VolResolved",   desc: "Volume-resolved flag" }
+      - { col: 3,  name: "VolResolved",   desc: "The high-resolution region volume enclosing this halo [Mpc\\(^3\\)]" }
       - { col: 4,  name: "Mvir",          desc: "Virial mass" }
 
   - id: virial
