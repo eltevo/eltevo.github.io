@@ -12,7 +12,7 @@ tags:
 links:
   code: https://github.com/eltevo/steps
   paper:
-    - TBA
+    - https://arxiv.org/abs/2602.20787
 ---
 
 ## Overview
@@ -40,7 +40,7 @@ These files are the primary output of the Simulation. They are in GAGDET-compati
 **Uncompressed size:** 1.5 GB / snapshot
 
 **Mirrors**
-- ELTE Kooplex: TBA
+- ELTE Kooplex: [Download](https://datashare.vo.elte.hu/metalnx/). Use the username `anonymous` with no password.
 - helsinkifi-my.sharepoint.com (only 4 snapshots): [Download](https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgCmwFcqlHBiTZ-Jdp1bfwV8AQq4NnzWcJJwmDV4h4-rn6o?e=GJVG1a)
 
 ---
@@ -56,7 +56,7 @@ These files are the primary output of the Simulation. They are in GAGDET-compati
 The isotropic $P(k)$ power spectrum of the dark matter density field is a standard statistic used to quantify the clustering. We estimated the power spectra from particle snapshots using the Feldman--Kaiser--Peacock (FKP) method.
 
 **Mirrors**
-- ELTE Kooplex: TBA
+- ELTE Kooplex: [Download](https://datashare.vo.elte.hu/metalnx/). Use the username `anonymous` with no password.
 - helsinkifi-my.sharepoint.com: [Download](https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCfdHpygkwOQJM4R0hAF0a9ASukMk5devFf7r6rWDY6O6k?e=Sj8kEo)
 
 ---
@@ -113,8 +113,8 @@ These files contain all available information about the identified haloes. The h
 </figure>
 
 **Mirrors**
-- ELTE Kooplex (ASCII): TBA
-- ELTE Kooplex (HDF5 + particles): TBA
+- ELTE Kooplex (ASCII): [Download](https://datashare.vo.elte.hu/metalnx/). Use the username `anonymous` with no password.
+- ELTE Kooplex (HDF5 + particles): [Download](https://datashare.vo.elte.hu/metalnx/). Use the username `anonymous` with no password.
 - helsinkifi-my.sharepoint.com (ASCII): [Download](https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgBQLQnqx65HQpL1rxNQcSkSAVktbtJeXylQ8VSCqGyjyiU?e=rdBary)
 - helsinkifi-my.sharepoint.com (HDF5 + particles): [Download](https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgATNo6G7U9UQIrlCrYaEt5hAcOt-QUn60tAH2EX2MpUfIE?e=D1nXgM)
 
