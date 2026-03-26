@@ -119,10 +119,10 @@ Regular pages reside in the `_pages/` directory. The current setup supports both
 layout: default
 title: "Page Title"
 permalink: /page-url/  # Optional, but highly recommended for clean URLs
-head:  # Optional, for any page-specific includes
-    - html tag in <head> 1
-    - html tag in <head> 2
-    - ...
+head: | # Optional, for any page-specific includes. Note `|` for multi-line content.
+    html tag in <head> 1
+    html tag in <head> 2
+    ...
 ```
 
 ### Adding new menu items
