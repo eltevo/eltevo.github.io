@@ -63,7 +63,10 @@ touch _deploy/.nojekyll
 ```sh
 npm run scss
 ```
-The `scss` script in [package.json](package.json) runs `sass --verbose --watch assets/scss:assets/css` to compile SCSS in `assets/scss/` into CSS in `assets/css/`. It watches for changes and automatically applies them, so you can keep it running while developing. This runs in the foreground, so you need to open a new terminal for Jekyll.
+The `scss` script in [package.json](package.json) watches
+`assets/scss/main.scss` and compiles the single production bundle to
+`assets/css/main.css`. It runs in the foreground, so open a second terminal
+for Jekyll.
 
 2. Run Jekyll:
 ```sh
@@ -83,53 +86,88 @@ Site will be available at `http://localhost:4000`. This command also runs in the
 - Projects collection: [_projects/](_projects/)
 - Layouts: [_layouts/](_layouts/)
 - Includes: [_includes/](_includes/)
-- Sass/SCSS sources: [assets/scss/](/assets/scss/)
-- Compiled CSS output: [assets/css/](/assets/css/)
+- Site copy and publications: [_data/](_data/)
+- Sass/SCSS sources: [assets/scss/](assets/scss/)
+- Compiled CSS bundle: `assets/css/main.css`
+- Local fonts and licences: [assets/fonts/](assets/fonts/)
 
 ### Adding new projects
 To add a new project, create a new Markdown file in the `_projects/` directory with the following front matter:
 ```yaml
 ---
-layout: posts
-title: "Title of project here"
-featured: false  # Set to true if you want it to appear among flagship projects
-published: true  # Set to false if you want to keep it as a draft and not have it appear on the site yet
+layout: project
+title: "Plain-text project title"
+short_title: "Optional short name"
+description: "Metadata description for search and link previews."
+summary: "Plain-text summary for project listings."
+published: true
+featured: false
 status: active
-summary: "Short summary here."
+updated: 2026-07-24
 tags:
-  - tag 1
-  - tag 2
-  - ...
-links: # Optional, you can leave `code` and `paper` empty if not applicable
-  code: code link
-  paper:
-    - paper link 1
-    - paper link 2
-    - ...
+  - cosmology
+thumbnail:
+  src: /assets/images/projects/example.svg
+  alt: "Scientifically meaningful image description"
+links:
+  code: https://example.com
+  data: https://example.com
+math: true
+zoom: true
 ---
 ```
 
-Projects will be automatically listed on the "Projects" page, and the `featured: true` flag will make them appear in the featured section on the homepage. You can also add project-specific content below the front matter, which will be rendered on the individual project page.
+Projects are automatically listed on the Projects page. `featured: true` also
+places them on the homepage, while `published: false` excludes unfinished
+projects from production builds. Keep `title` and `summary` free of HTML and
+MathJax. Use `math` and `zoom` only when the project content needs those
+enhancements.
+
+### Adding publications
+
+Publications are curated in `_data/publications.yml`, newest first:
+
+```yaml
+- id: stable-citation-key
+  title: "Paper title"
+  authors:
+    - "Author One"
+    - "Author Two"
+  year: 2026
+  venue: "Journal or preprint"
+  doi: "10.xxxx/example"
+  arxiv: "2601.00001"
+  project: project-file-slug
+  featured: true
+```
+
+`project` matches the filename slug in `_projects/`. When that project is
+published, the publication list and project page link to each other.
+
+### Updating group copy
+
+Verified affiliation, contact, and About-page copy live in `_data/site.yml`.
+Empty optional values are intentionally hidden rather than replaced with
+invented public copy.
 
 ### Adding new pages
-Regular pages reside in the `_pages/` directory. The current setup supports both Markdown and HTML files to be placed here. Pages use the `default` layout, which includes the common header, navigation bar, footer, and global styling. Each page must have the appropriate front matter at the top:
+Regular pages reside in `_pages/` and normally use the `pages` layout:
 
 ```yaml
 ---
-layout: default
+layout: pages
 title: "Page Title"
-permalink: /page-url/  # Optional, but highly recommended for clean URLs
-head: | # Optional, for any page-specific includes. Note `|` for multi-line content.
-    html tag in <head> 1
-    html tag in <head> 2
-    ...
+eyebrow: "Optional section label"
+description: "Page summary used in the introduction and metadata."
+permalink: /page-url/
 ```
 
 ### Adding new menu items
-To add a new menu item to the navigation bar, edit the `_includes/navbar.html` file. You can add a new `<li>` element with a link to the desired page and use the same logic to set the "active" class based on the current page URL. For example, to add a "People" menu item linking to `/people/`, you would add:
+Edit `_includes/navigation.html`. Use `aria-current="page"` for the active
+route rather than a visual-only class.
 ```html
 <li>
-    <a href="{{ '/people/' | relative_url }}"{% if page.url == '/people/' or page.url contains '/people/' %} class="active"{% endif %}>People</a>
+    <a href="{{ '/people/' | relative_url }}"{% if page.url contains '/people/' %} aria-current="page"{% endif %}>People</a>
 </li>
 ```
 Make sure to place it in the correct position within the `<ul>` to maintain the desired order of menu items.
@@ -168,9 +206,9 @@ git push origin gh-pages
 cd -
 ```
 
-After the steps above, CSS files will be naturally missing and need to be recompiled on `master` to be included during development.
-
 ### Important notes on deployment
 - Always ensure you are on the correct branch (`master` for development, `gh-pages` for deployment) before running build or deployment commands.
 - Built output is in `_site/` (ignored via [.gitignore](.gitignore)).
+- For a stricter pre-deployment check, run
+  `JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter`.
 - The `gh-pages` branch should **only** contain the built site. Do not commit source files or development changes to `gh-pages`.
