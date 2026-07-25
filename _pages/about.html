@@ -1,7 +1,45 @@
 ---
 layout: pages
-title: About
+title: About ELTEVO
+eyebrow: The research group
+description: "ELTE Virtual Observatory is a cosmology research group at Eötvös Loránd University in Budapest, Hungary."
 permalink: /about/
 ---
 
-<h1>About</h1>
+<section class="about-grid">
+  <div>
+    <p class="lead">{{ site.data.site.group.description }}</p>
+    {% if site.data.site.group.research_summary != "" %}
+      <p>{{ site.data.site.group.research_summary }}</p>
+    {% endif %}
+  </div>
+
+  <dl class="fact-list">
+    <div>
+      <dt>Affiliation</dt>
+      <dd><a href="{{ site.data.site.group.affiliation_url }}">{{ site.data.site.group.affiliation }}</a></dd>
+    </div>
+    <div>
+      <dt>Location</dt>
+      <dd>{{ site.data.site.group.location }}</dd>
+    </div>
+    <div>
+      <dt>Research outputs</dt>
+      <dd><a href="{{ '/projects/' | relative_url }}">Projects</a> and <a href="{{ '/publications/' | relative_url }}">publications</a></dd>
+    </div>
+    <div>
+      <dt>Open source</dt>
+      <dd><a href="{{ site.data.site.group.github_url }}">ELTEVO on GitHub</a></dd>
+    </div>
+    {% if site.data.site.group.contact_email != "" %}
+      <div>
+        <dt>Contact</dt>
+        <dd><a href="mailto:{{ site.data.site.group.contact_email }}">{{ site.data.site.group.contact_email }}</a></dd>
+      </div>
+    {% endif %}
+  </dl>
+</section>
+
+<!--
+  Content placeholder: expand _data/site.yml or redesign the page.
+-->

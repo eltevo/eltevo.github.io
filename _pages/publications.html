@@ -1,0 +1,22 @@
+---
+layout: pages
+title: Publications
+eyebrow: Research output
+description: "Selected papers associated with ELTEVO research projects."
+permalink: /publications/
+---
+
+{% assign publications_by_year = site.data.publications | group_by: "year" | sort: "name" | reverse %}
+
+<div class="publication-years">
+  {% for year in publications_by_year %}
+    <section class="publication-year" aria-labelledby="publications-{{ year.name }}">
+      <h2 id="publications-{{ year.name }}">{{ year.name }}</h2>
+      <div class="publication-list">
+        {% for publication in year.items %}
+          {% include publication.html publication=publication hide_year=true %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</div>

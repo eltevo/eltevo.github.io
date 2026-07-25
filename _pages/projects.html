@@ -1,0 +1,38 @@
+---
+layout: pages
+title: Projects
+eyebrow: Research portfolio
+description: "Computational cosmology projects, simulation methods, software, and public research data from ELTEVO."
+permalink: /projects/
+---
+
+{% assign featured_projects = site.projects | where: "featured", true | sort: "title" %}
+{% assign other_projects = site.projects | where: "featured", false | sort: "title" %}
+
+{% if featured_projects.size > 0 %}
+  <section class="listing-section" aria-labelledby="featured-projects-title">
+    <div class="section-heading">
+      <p class="eyebrow">Selected work</p>
+      <h2 id="featured-projects-title">Featured projects</h2>
+    </div>
+    <div class="project-list">
+      {% for project in featured_projects %}
+        {% include project-entry.html project=project %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% if other_projects.size > 0 %}
+  <section class="listing-section" aria-labelledby="other-projects-title">
+    <div class="section-heading">
+      <p class="eyebrow">Research archive</p>
+      <h2 id="other-projects-title">Other projects</h2>
+    </div>
+    <div class="project-list">
+      {% for project in other_projects %}
+        {% include project-entry.html project=project %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

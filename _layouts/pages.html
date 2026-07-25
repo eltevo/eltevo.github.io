@@ -1,20 +1,19 @@
 ---
 layout: default
-head: |
-    <link rel="stylesheet" href="/assets/css/pages.css">
-    <link rel="stylesheet" href="/assets/css/media.css">
-    <link rel="stylesheet" href="/assets/css/tables.css">
 ---
 
-<div id="content">
-    {% include header.html %}
-    {% include navigation.html %}
-    <div id="document">
-        {{ content }}
-    </div>
-    {% include footer.html %}
-</div>
-<!-- MathJax 2.x config -->
-<script type="text/javascript" async
-    src="/assets/js/mathjax/mathjax-2-config.js">
-</script>
+<article class="page-shell container">
+  <header class="page-intro">
+    {% if page.eyebrow %}
+      <p class="eyebrow">{{ page.eyebrow }}</p>
+    {% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="page-intro__summary">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <div class="page-surface prose">
+    {{ content }}
+  </div>
+</article>
