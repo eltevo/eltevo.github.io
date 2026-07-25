@@ -1,0 +1,71 @@
+- id: racz-cylindrical-2026
+  title: "Cylindrical cosmological simulations with StePS"
+  authors:
+    - "Gábor Rácz"
+    - "Viola H. Varga"
+    - "Balázs Pál"
+    - "István Szapudi"
+    - "István Csabai"
+    - "Till Sawala"
+  year: 2026
+  venue: "Astronomy & Astrophysics 710, A101"
+  doi: "10.1051/0004-6361/202659526"
+  arxiv: "2602.20787"
+  project: cylindrical-simulations
+  featured: true
+
+- id: pal-rotating-2024
+  title: "Simulating Rotating Newtonian Universes"
+  authors:
+    - "Balázs Pál"
+    - "Tze Goh"
+    - "Gábor Rácz"
+    - "István Szapudi"
+  year: 2024
+  venue: "arXiv preprint"
+  arxiv: "2412.00594"
+  project: rotating-universe
+  featured: true
+
+- id: racz-multigpu-2018
+  title: "StePS: A Multi-GPU Cosmological N-body Code for Compactified Simulations"
+  authors:
+    - "Gábor Rácz"
+    - "István Szapudi"
+    - "László Dobos"
+    - "István Csabai"
+    - "Alexander S. Szalay"
+  year: 2018
+  venue: "arXiv preprint"
+  arxiv: "1811.05903"
+  project: steps
+  featured: false
+
+- id: racz-compactified-2018
+  title: "Compactified Cosmological Simulations of the Infinite Universe"
+  authors:
+    - "Gábor Rácz"
+    - "István Szapudi"
+    - "István Csabai"
+    - "László Dobos"
+  year: 2018
+  venue: "Monthly Notices of the Royal Astronomical Society"
+  doi: "10.1093/mnras/sty695"
+  arxiv: "1711.04959"
+  project: steps
+  featured: true
+
+- id: racz-avera-2017
+  title: "Concordance cosmology without dark energy"
+  authors:
+    - "Gábor Rácz"
+    - "László Dobos"
+    - "Róbert Beck"
+    - "István Szapudi"
+    - "István Csabai"
+  year: 2017
+  venue: "Monthly Notices of the Royal Astronomical Society: Letters"
+  doi: "10.1093/mnrasl/slx026"
+  arxiv: "1607.08797"
+  project: avera
+  featured: true

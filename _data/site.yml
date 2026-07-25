@@ -1,0 +1,10 @@
+group:
+  short_name: "ELTEVO"
+  name: "ELTE Virtual Observatory"
+  description: "Cosmology research group at Eötvös Loránd University (ELTE) in Budapest, Hungary."
+  research_summary: ""
+  affiliation: "Eötvös Loránd University (ELTE)"
+  affiliation_url: "https://www.elte.hu/en/"
+  location: "Budapest, Hungary"
+  github_url: "https://github.com/eltevo"
+  contact_email: ""
