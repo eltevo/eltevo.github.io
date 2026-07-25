@@ -1,3 +1,28 @@
-<footer>
-  Website created and designed by @masterdesky &#8212; &copy; 2026&#8211;{{ 'now' | date: "%Y" }}
+<footer class="site-footer">
+  <div class="site-footer__inner container">
+    <div class="site-footer__identity">
+      <p class="site-footer__wordmark">ELTEVO</p>
+      <p>{{ site.data.site.group.affiliation }}<br>{{ site.data.site.group.location }}</p>
+    </div>
+
+    <div class="site-footer__links">
+      <a href="{{ '/projects/' | relative_url }}">Projects</a>
+      <a href="{{ '/publications/' | relative_url }}">Publications</a>
+      <a href="{{ site.data.site.group.github_url }}">GitHub</a>
+      {% if site.data.site.group.contact_email != "" %}
+        <a href="mailto:{{ site.data.site.group.contact_email }}">Contact</a>
+      {% endif %}
+    </div>
+
+    <div class="site-footer__fine-print">
+      <p>
+        Background adapted from
+        <a href="https://www.esa.int/ESA_Multimedia/Images/2025/03/Euclid_Deep_Field_South_16x_zoom">Euclid Deep Field South</a>.
+        Credit: ESA/Euclid/Euclid Consortium/NASA; processing by J.-C. Cuillandre, E. Bertin and G. Anselmi.
+        <a href="https://creativecommons.org/licenses/by-sa/3.0/igo/">CC BY-SA 3.0 IGO</a>.
+      </p>
+      {% assign current_year = 'now' | date: "%Y" %}
+      <p>Site by @masterdesky · © {% if current_year == "2026" %}2026{% else %}2026–{{ current_year }}{% endif %}</p>
+    </div>
+  </div>
 </footer>

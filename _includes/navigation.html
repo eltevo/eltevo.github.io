@@ -1,13 +1,16 @@
-<nav class="main-navigation">
-  <ul class="menu list-unstyled">
+<nav id="site-navigation" class="site-navigation" aria-label="Primary navigation" data-site-navigation>
+  <ul>
     <li>
-      <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>Home</a>
+      <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
     </li>
     <li>
-      <a href="{{ '/projects/' | relative_url }}"{% if page.url == '/projects/' or page.url contains '/projects/' %} class="active"{% endif %}>Projects</a>
+      <a href="{{ '/projects/' | relative_url }}"{% if page.url contains '/projects/' %} aria-current="page"{% endif %}>Projects</a>
     </li>
     <li>
-      <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' or page.url contains '/about/' %} class="active"{% endif %}>About</a>
+      <a href="{{ '/publications/' | relative_url }}"{% if page.url contains '/publications/' %} aria-current="page"{% endif %}>Publications</a>
+    </li>
+    <li>
+      <a href="{{ '/about/' | relative_url }}"{% if page.url contains '/about/' %} aria-current="page"{% endif %}>About</a>
     </li>
   </ul>
 </nav>
