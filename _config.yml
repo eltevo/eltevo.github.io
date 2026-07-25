@@ -16,7 +16,10 @@ plugins:
 include:
   - _pages
 exclude:
+  - assets/scss
+  - CREDITS.md
   - package-lock.json
+  - package.json
   - node_modules  # Jekyll ignores this directory by default
   - vendor        # Jekyll ignores this directory by default
   - Gemfile
@@ -42,9 +45,8 @@ collections:
 
 defaults:
   - scope:
-      path:
-        - "_projects"
-        - "_drafts"
+      path: ""
       type: projects
     values:
       layout: project
+      math: false

@@ -1,6 +1,8 @@
 ---
-layout: projects
+layout: project
 title: "Rotating Universe Simulations with StePS"
+short_title: "Rotating Universe"
+description: "Numerical simulations of rotating Newtonian universes with StePS."
 published: false
 featured: true
 status: active
@@ -11,8 +13,7 @@ tags:
   - N-body
 links:
   code: https://github.com/eltevo/steps
-  paper:
-    - https://arxiv.org/abs/2412.00594
+math: false
 ---
 
 ## Overview

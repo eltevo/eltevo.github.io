@@ -1,29 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const zoomTriggers = document.querySelectorAll('.zoom-trigger');
-    const dialog = document.querySelector('.image-zoom-dialog');
-    if (!dialog) return;
-    const dialogImage = dialog.querySelector('img');
-    if (!dialogImage) return;
+  const dialog = document.querySelector('.image-zoom-dialog');
+  if (!dialog || typeof dialog.showModal !== 'function') return;
 
-    zoomTriggers.forEach(trigger => {
-        trigger.addEventListener('click', () => {
-            const sourceImage = trigger.querySelector('img');
-            if (!sourceImage) return;
-            dialogImage.src = sourceImage.src;
-            dialogImage.alt = sourceImage.alt;
-            dialog.showModal();
-            document.body.classList.add('modal-open'); 
-        });
-    });
+  const dialogImage = dialog.querySelector('[data-zoom-image]');
+  const closeButton = dialog.querySelector('[data-zoom-close]');
+  let opener = null;
 
-    // Close if the click is on the backdrop or the image itself
-    dialog.addEventListener('click', (event) => {
-      if (event.target === dialog || event.target === dialogImage) {
-        dialog.close();
-      }
+  document.querySelectorAll('.zoom-trigger').forEach((trigger) => {
+    const sourceImage = trigger.querySelector('img');
+    if (!sourceImage) return;
+
+    if (!trigger.getAttribute('aria-label')) {
+      trigger.setAttribute('aria-label', `Expand figure: ${sourceImage.alt}`);
+    }
+
+    trigger.addEventListener('click', () => {
+      opener = trigger;
+      dialogImage.src = sourceImage.currentSrc || sourceImage.src;
+      dialogImage.alt = sourceImage.alt;
+      dialog.showModal();
+      document.body.classList.add('modal-open');
+      closeButton.focus();
     });
-    // Re-enable scrolling when the dialog is closed
-    dialog.addEventListener('close', () => {
-      document.body.classList.remove('modal-open');
-    });
+  });
+
+  closeButton?.addEventListener('click', () => dialog.close());
+
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+
+  dialog.addEventListener('close', () => {
+    document.body.classList.remove('modal-open');
+    dialogImage.src = '';
+    dialogImage.alt = '';
+    opener?.focus();
+    opener = null;
+  });
 });

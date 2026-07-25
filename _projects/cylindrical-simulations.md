@@ -1,18 +1,25 @@
 ---
-layout: projects
+layout: project
 title: "Cylindrical cosmological simulations with StePS"
+short_title: "Cylindrical StePS"
+description: "N-body simulations of a Universe that is periodic along one axis and infinite in the perpendicular directions."
 published: true
 featured: true
 status: active
-summary: "Cosmological N-body simulations in $S^1 \\times \\mathbb{R}^2$ topological manifold."
+updated: 2026-05-12
+summary: "N-body simulations of a Universe that is periodic along one axis and infinite in the perpendicular directions."
 tags:
   - cosmology
   - simulations
   - N-body
+thumbnail:
+  src: /assets/images/projects/cylindrical-simulation/LCDM_N24M_Halos_0137.svg
+  alt: "Dark matter haloes in a cylindrical cosmological simulation at redshift zero"
 links:
   code: https://github.com/eltevo/steps
-  paper:
-    - https://arxiv.org/abs/2602.20787
+  data: "#download-links"
+math: true
+zoom: true
 ---
 
 ## Overview
@@ -30,8 +37,8 @@ To demonstrate the new simulation method, we run a new cosmological $N$-body sim
 
 These files are the primary output of the Simulation. They are in GAGDET-compatible [HDF5](https://www.hdfgroup.org/solutions/hdf5/) format, and containing particle positions, velocities, masses, and IDs. Overall 138 snapshots were saved during the simulation. These can be visualized with [gadgetviewer](https://github.com/jchelly/gadgetviewer) or [topsy](https://github.com/pynbody/topsy).
  
-<figure class="image" style="display: flex; justify-content: center;">
-  <video autoplay loop muted playsinline style="width: 100%; height: auto;" poster="">
+<figure class="image video-figure">
+  <video autoplay loop muted playsinline preload="metadata" poster="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Halos_0137.svg" data-ambient-video>
     <source src="/assets/images/projects/cylindrical-simulation/CylindricalExampleCenter.webm" type="video/webm">
     Your browser does not support the video tag.
   </video>
@@ -194,6 +201,5 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
 
 **Particle mass range (all companion runs):**  
 $M_{p} = 1.89 \cdot 10^{11}\,\mathrm{M_\odot} - 1.85 \cdot 10^{14}\,\mathrm{M_\odot}$.
-
 
 

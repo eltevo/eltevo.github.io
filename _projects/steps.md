@@ -1,6 +1,8 @@
 ---
-layout: projects
+layout: project
 title: "StePS: Stereographic Projection cosmological N-body Simulations"
+short_title: "StePS"
+description: "Stereographically projected cosmological N-body simulations of the infinite Universe."
 published: false
 featured: true
 status: active
@@ -11,9 +13,7 @@ tags:
   - N-body
 links:
   code: https://github.com/eltevo/steps
-  paper:
-    - https://arxiv.org/abs/1711.04959
-    - https://arxiv.org/abs/1811.05903
+math: false
 ---
 
 ## Overview
