@@ -1,0 +1,132 @@
+@use "variables" as v;
+
+.table-wrapper,
+.field-group {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+  container-type: inline-size;
+}
+
+table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  color: #dbe4ea;
+  font-family: var(--font-ui);
+  font-size: 1.14rem;
+  line-height: 1.45;
+}
+
+table thead {
+  border-bottom: 1px solid var(--border-strong);
+}
+
+table th,
+table td {
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+table th {
+  color: var(--text);
+  font-size: 1.04rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+table tbody tr:hover {
+  background: rgba(114, 213, 229, 0.035);
+}
+
+table .col-download a {
+  font-weight: 600;
+}
+
+table.sim-table {
+  table-layout: fixed;
+}
+
+table.sim-table col.col-run {
+  width: 18%;
+}
+
+table.sim-table col.col-r,
+table.sim-table col.col-lz,
+table.sim-table col.col-np {
+  width: 16%;
+}
+
+table.sim-table col.col-size {
+  width: 14%;
+}
+
+table.sim-table col.col-download {
+  width: 20%;
+}
+
+.field-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0 2rem;
+}
+
+.field-nav a {
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 0.94rem;
+  text-decoration: none;
+}
+
+.field-nav a:hover {
+  border-color: var(--accent);
+  background: rgba(114, 213, 229, 0.06);
+}
+
+.field-group {
+  margin-bottom: 2.5rem;
+}
+
+.field-group > h4,
+.field-group > p {
+  position: sticky;
+  left: 0;
+  max-width: var(--measure);
+}
+
+.catalogue-formats {
+  padding-left: 0 !important;
+  list-style: none;
+}
+
+.catalogue-formats > li {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  background: rgba(16, 27, 42, 0.42);
+}
+
+details > summary {
+  cursor: pointer;
+}
+
+// Keyed to the scroll wrapper rather than the viewport: now that tables span
+// the full article width, viewport size no longer predicts the space a table
+// actually has. This also catches the `.field-group` tables nested inside
+// `.catalogue-formats > li`, which get ~34px less than a top-level wrapper.
+@container (max-width: 700px) {
+  table {
+    min-width: 680px;
+  }
+
+  table.sim-table {
+    min-width: 720px;
+  }
+}

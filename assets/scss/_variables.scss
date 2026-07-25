@@ -1,33 +1,29 @@
-/* Global page settings */
-$pageMax: 1200px;
-$pagePad: 20px;
+$content-max: 1200px;
+$measure: 64rem;
+// 44rem = 704px. At the desktop prose size (1.18rem = 18.88px, Source Serif 4)
+// that is ~74 characters. Deliberately NOT `ch`: `ch` resolves against the
+// declaring element's own font, which is how the previous `$article-max: 72ch`
+// silently became ~576px when declared on a sans-serif 16px grid container.
+$bp-nav: 760px;
+$bp-project: 980px;
+$bp-small: 560px;
 
-/*  Default colors  */
-$bgColor: rgba(5, 15, 25, 1.0);
-$baseColor: rgba(15, 25, 35, 1.0);
-$mainColor: rgba(255, 255, 255, 1.0);
-$linkColor: rgba(100, 150, 250, 1.0);
+@mixin focus-ring {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
 
-/* Header settings */
-$headerFontSize: 3rem;
+@mixin surface {
+  background: rgba(11, 18, 29, 0.94);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
 
-/* Navbar settings */
-$navbarBgColor: none;
-$navbarFontColor: $mainColor;
-$navbarFontSize: 18px;
-
-/* Footer settings */
-$footerBgColor: $baseColor;
-$footerFontColor: $mainColor;
-$footerFontSize: 16px;
-$footerHeight: 50px;
-
-/* 404 page settings */
-$notFoundBgColor: rgba(0, 5, 10, 0.6);
-
-/* Regular page settings */
-$textFontSize: 24px;
-$textColor: $mainColor;
-$titleFont: 'Merriweather', serif;
-$textFont: 'Georgia', serif;
-$lineHeight: 1.5;
+// Caps direct children at the reading measure and centres them. Children that
+// should span the full padding box opt out with `max-width: none`.
+@mixin content-measure {
+  > * {
+    max-width: min(100%, var(--measure));
+    margin-inline: auto;
+  }
+}

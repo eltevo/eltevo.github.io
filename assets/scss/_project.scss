@@ -1,0 +1,263 @@
+@use "variables" as v;
+
+.project-page {
+  padding-top: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.project-hero {
+  @include v.surface;
+  overflow: hidden;
+  border-radius: 0.45rem;
+}
+
+.project-hero__content {
+  min-width: 0;
+  padding: clamp(1.5rem, 5vw, 4.5rem);
+}
+
+// `ch` is correct here: it resolves against this element's own font
+// (--font-editorial at up to 4.8rem), so 26ch is ~77% of the banner box.
+.project-hero h1 {
+  max-width: 26ch;
+  margin-bottom: 1.4rem;
+  font-size: clamp(2.3rem, 5.2vw, 4.8rem);
+  overflow-wrap: break-word;
+}
+
+.project-hero__summary {
+  max-width: min(100%, var(--measure));
+  margin-bottom: 1.7rem;
+  color: #c8d4dd;
+  font-family: var(--font-editorial);
+  font-size: clamp(1.1rem, 1.8vw, 1.38rem);
+  line-height: 1.62;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.3rem;
+  margin-bottom: 1.2rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.2rem;
+  margin-top: 2rem;
+}
+
+.project-layout {
+  padding-top: clamp(3rem, 7vw, 6rem);
+}
+
+.project-article {
+  @include v.surface;
+  @include v.content-measure;
+  padding: clamp(1.25rem, 5vw, 4.5rem);
+  border-radius: 0.45rem;
+  counter-reset: figure-counter;
+
+  // Media and structural blocks span the full padding box. `:is()` takes its
+  // highest-specificity argument, so this outranks the mixin's `> *` rule.
+  > :is(figure, table, iframe, hr, .table-wrapper,
+    .catalogue-formats, .related-publications,
+    .full-width, [data-full-width]) {
+    max-width: none;
+  }
+}
+
+.project-article > :first-child {
+  margin-top: 0;
+}
+
+.project-article > h2:first-child {
+  margin-top: 0;
+}
+
+.image {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 1rem;
+  margin: 2.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  background: rgba(238, 244, 248, 0.98);
+}
+
+.image figcaption {
+  grid-column: 1 / -1;
+  margin: 0.35rem 0 0;
+  color: #314152;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.image figcaption::before {
+  counter-increment: figure-counter;
+  content: "Fig. " counter(figure-counter) ". ";
+  font-weight: 600;
+}
+
+.image .zoom-trigger {
+  display: flex;
+  min-width: 0;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.image .zoom-trigger img {
+  width: 100%;
+  max-height: 620px;
+  object-fit: contain;
+}
+
+// A lone panel stretched across the full article width overshoots the height
+// cap, and `object-fit: contain` then letterboxes it with wide bands of dead
+// space. Constrain it by width instead and let the height follow the aspect
+// ratio, which stays correct whatever the figure's proportions are.
+.image:not(.video-figure):has(> .zoom-trigger:only-of-type) {
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.image:not(.video-figure):has(> .zoom-trigger:only-of-type) .zoom-trigger img {
+  max-height: none;
+}
+
+.video-figure {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  background: #03070c;
+}
+
+.video-figure video {
+  width: 100%;
+}
+
+.image-zoom-dialog {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(3, 7, 12, 0.97);
+  color: var(--text);
+}
+
+.image-zoom-dialog::backdrop {
+  background: rgba(3, 7, 12, 0.9);
+}
+
+.image-zoom-dialog__bar {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(5, 9, 16, 0.86);
+}
+
+.image-zoom-dialog__bar p {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.image-zoom-dialog__close {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.8rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.25rem;
+  background: var(--surface-raised);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.78rem;
+}
+
+.image-zoom-dialog > img {
+  width: 100%;
+  height: 100%;
+  padding: 80px 2vw 2vh;
+  object-fit: contain;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.related-publications {
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.related-publications > h2 {
+  margin-top: 0;
+}
+
+.publication-list--compact {
+  font-family: var(--font-ui);
+}
+
+.publication-list--compact .publication-entry {
+  max-width: calc(var(--measure) + 5.5rem);
+  grid-template-columns: 4rem minmax(0, 1fr);
+}
+
+iframe {
+  display: block;
+  width: 100%;
+  min-height: 420px;
+  margin: 2rem auto;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: v.$bp-small) {
+  .project-page {
+    padding-top: 1rem;
+  }
+
+  .project-hero__content {
+    padding: 1.3rem;
+  }
+
+  .project-hero h1 {
+    font-size: clamp(2.15rem, 12vw, 3.25rem);
+  }
+
+  .project-article {
+    padding: 1.2rem;
+  }
+
+  .image {
+    padding: 0.5rem;
+  }
+
+  iframe {
+    min-height: 260px;
+  }
+}
