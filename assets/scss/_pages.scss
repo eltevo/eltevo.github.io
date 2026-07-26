@@ -31,7 +31,7 @@
   // These pages are structural rather than prose, so their sections keep the
   // full width. The measure only engages for loose body copy.
   > :is(.about-grid, .listing-section, .publication-years,
-    .project-list, .publication-list, .fact-list) {
+    .project-list, .publication-list, .fact-list, .mirror-set) {
     max-width: none;
   }
 }

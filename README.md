@@ -63,10 +63,7 @@ touch _deploy/.nojekyll
 ```sh
 npm run scss
 ```
-The `scss` script in [package.json](package.json) watches
-`assets/scss/main.scss` and compiles the single production bundle to
-`assets/css/main.css`. It runs in the foreground, so open a second terminal
-for Jekyll.
+The `scss` script in [package.json](package.json) watches `assets/scss/main.scss` and compiles the single production bundle to `assets/css/main.css`. It runs in the foreground, so open a second terminal for Jekyll.
 
 2. Run Jekyll:
 ```sh
@@ -117,11 +114,7 @@ zoom: true
 ---
 ```
 
-Projects are automatically listed on the Projects page. `featured: true` also
-places them on the homepage, while `published: false` excludes unfinished
-projects from production builds. Keep `title` and `summary` free of HTML and
-MathJax. Use `math` and `zoom` only when the project content needs those
-enhancements.
+Projects are automatically listed on the Projects page. `featured: true` also places them on the homepage, while `published: false` excludes unfinished projects from production builds. Keep `title` and `summary` free of HTML and MathJax. Use `math` and `zoom` only when the project content needs those enhancements.
 
 ### Adding publications
 
@@ -141,14 +134,48 @@ Publications are curated in `_data/publications.yml`, newest first:
   featured: true
 ```
 
-`project` matches the filename slug in `_projects/`. When that project is
-published, the publication list and project page link to each other.
+`project` matches the filename slug in `_projects/`. When that project is published, the publication list and project page link to each other.
+
+### Adding download mirrors
+
+Data downloads are rendered by `_includes/mirror.html` as full-width rows that name the destination host, describe the payload, and surface access notes in a highlighted strip. Facts that repeat across articles live once in `_data/mirrors.yml`:
+
+```yaml
+kooplex:
+  name: "ELTE Kooplex"
+  domain: "datashare.vo.elte.hu"
+  url: "https://datashare.vo.elte.hu/metalnx/"
+  note_label: "Sign in"
+  note: "Log in with the username <code>anonymous</code> and leave the password field empty."
+```
+
+Per-dataset details stay next to the prose that describes them. Wrap one or more rows in a `.mirror-set`:
+
+```html
+<div class="mirror-set">
+  <p class="mirror-set__label">Download mirrors</p>
+  {% include mirror.html host="kooplex" label="All 138 snapshots" format="HDF5" filesize="1.5 GB / snapshot" %}
+  {% include mirror.html host="helsinki-sharepoint" label="Four selected snapshots" badge="Partial" format="HDF5" href="https://example.com/deep-link" %}
+</div>
+```
+
+| Parameter | Purpose |
+| --- | --- |
+| `host` | key in `_data/mirrors.yml`; supplies name, domain, url and note |
+| `href` | per-dataset deep link; falls back to the host's landing url |
+| `name`, `domain` | override the registry, or replace it entirely |
+| `label` | what this mirror gives you |
+| `format`, `filesize` | pill-shaped chips, rendered only when present |
+| `badge` | short qualifier such as `Partial` |
+| `note`, `note_label` | per-call access note, inline HTML allowed |
+| `hide_note` | `true` suppresses the host's registry note |
+| `action` | call-to-action text, defaults to `Download` |
+
+`.mirror-set` spans the full width of `.project-article` and `.page-surface`, so it works in both projects and regular pages. For a download link inside a table cell, reuse the pill on its own: `<a class="mirror__action mirror__action--compact" …>`.
 
 ### Updating group copy
 
-Verified affiliation, contact, and About-page copy live in `_data/site.yml`.
-Empty optional values are intentionally hidden rather than replaced with
-invented public copy.
+Verified affiliation, contact, and About-page copy live in `_data/site.yml`. Empty optional values are intentionally hidden rather than replaced with invented public copy.
 
 ### Adding new pages
 Regular pages reside in `_pages/` and normally use the `pages` layout:
@@ -163,8 +190,7 @@ permalink: /page-url/
 ```
 
 ### Adding new menu items
-Edit `_includes/navigation.html`. Use `aria-current="page"` for the active
-route rather than a visual-only class.
+Edit `_includes/navigation.html`. Use `aria-current="page"` for the active route rather than a visual-only class.
 ```html
 <li>
     <a href="{{ '/people/' | relative_url }}"{% if page.url contains '/people/' %} aria-current="page"{% endif %}>People</a>
@@ -209,6 +235,5 @@ cd -
 ### Important notes on deployment
 - Always ensure you are on the correct branch (`master` for development, `gh-pages` for deployment) before running build or deployment commands.
 - Built output is in `_site/` (ignored via [.gitignore](.gitignore)).
-- For a stricter pre-deployment check, run
-  `JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter`.
+- For a stricter pre-deployment check, run `JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter`.
 - The `gh-pages` branch should **only** contain the built site. Do not commit source files or development changes to `gh-pages`.

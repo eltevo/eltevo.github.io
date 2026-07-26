@@ -65,7 +65,7 @@
   // Media and structural blocks span the full padding box. `:is()` takes its
   // highest-specificity argument, so this outranks the mixin's `> *` rule.
   > :is(figure, table, iframe, hr, .table-wrapper,
-    .catalogue-formats, .related-publications,
+    .catalogue-formats, .related-publications, .mirror-set,
     .full-width, [data-full-width]) {
     max-width: none;
   }
