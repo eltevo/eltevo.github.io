@@ -1,0 +1,176 @@
+@use "variables" as v;
+
+// The hero amoeba. Markup and geometry notes live in `_includes/amoeba.html`.
+//
+// Nothing here animates a geometry attribute: the silhouette turns because its
+// clip path turns, so the picture underneath never moves and its crop is the
+// same at every frame. Rotation rides the `rotate` property and the pulse rides
+// `scale`, which lets two animations of different periods drive one element --
+// two animations on `transform` would not compose, the later one would simply
+// win.
+//
+// Accent colours are written as literal rgba() rather than var(--accent)
+// because they all need alpha, matching the rest of the hero.
+
+.amoeba {
+  position: absolute;
+
+  // The SVG runs 9% past the figure box on every side. That puts the blob's
+  // widest radius exactly on the box edge while leaving the spike bezel room
+  // to sit outside it, in the hero's grid gap.
+  inset: -9%;
+  width: auto;
+  max-width: none;
+  height: auto;
+}
+
+// Clip window, dark field and both outlines share one motion so they can never
+// drift out of register.
+.amoeba__turn {
+  transform-box: view-box;
+  transform-origin: 240px 240px;
+  animation:
+    amoeba-turn 150s linear infinite,
+    amoeba-breathe 18s ease-in-out infinite;
+}
+
+.amoeba__field {
+  fill: #03070c;
+}
+
+.amoeba__image {
+  opacity: 0.78;
+  filter: saturate(0.78) contrast(1.08);
+}
+
+.amoeba__halo {
+  animation: amoeba-halo 18s ease-in-out infinite;
+}
+
+.amoeba__line {
+  fill: none;
+  stroke: rgba(173, 206, 226, 0.34);
+  stroke-width: 1;
+
+  // Hairlines stay 1px at every viewport instead of thinning out with the
+  // viewBox as the hero narrows.
+  vector-effect: non-scaling-stroke;
+}
+
+.amoeba__line--outer {
+  stroke: rgba(114, 213, 229, 0.3);
+}
+
+.amoeba__inner-ring {
+  transform-box: view-box;
+  transform-origin: 240px 240px;
+  fill: none;
+  stroke: rgba(114, 213, 229, 0.26);
+
+  // `pathLength="360"` in the markup normalises the circle, so 2 + 8 divides it
+  // into exactly 36 dashes and the pattern closes without a seam.
+  stroke-dasharray: 2 8;
+  stroke-width: 1;
+  animation: amoeba-turn-rev 110s linear infinite;
+  vector-effect: non-scaling-stroke;
+}
+
+.amoeba__spikes {
+  transform-box: view-box;
+  transform-origin: 240px 240px;
+  animation: amoeba-turn-rev 220s linear infinite;
+}
+
+.amoeba__spike {
+  transform-box: view-box;
+
+  // The base of every spike, which is what `scaleY` swings the length from.
+  transform-origin: 240px 21px;
+  stroke: rgba(173, 206, 226, 0.42);
+  stroke-width: 1;
+  stroke-linecap: round;
+  animation: amoeba-wave 12s ease-in-out infinite;
+
+  // The crests have to travel a whole number of cycles around the ring or the
+  // wave shows a seam at twelve o'clock. 12s x 3 crests / 72 spikes = 0.5s;
+  // change any one of those three numbers and this has to be recomputed.
+  animation-delay: calc(var(--i) * -0.5s);
+  vector-effect: non-scaling-stroke;
+}
+
+// Every sixth spike reads as a major tick. `scale` is free here because the
+// wave drives `transform`, so the two multiply instead of overwriting.
+.amoeba__spike--major {
+  stroke: rgba(114, 213, 229, 0.62);
+  scale: 1 1.55;
+}
+
+@keyframes amoeba-turn {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes amoeba-turn-rev {
+  to {
+    rotate: -360deg;
+  }
+}
+
+@keyframes amoeba-breathe {
+  0%,
+  100% {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.018;
+  }
+}
+
+@keyframes amoeba-halo {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes amoeba-wave {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scaleY(0.34);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  // The global blanket in `_base.scss` only collapses duration and iteration
+  // count, which would snap every layer onto its 100% keyframe -- spikes at
+  // their shortest, halo at its dimmest. Stop the animations outright and pin a
+  // frame that was composed to be looked at.
+  .amoeba__turn,
+  .amoeba__halo,
+  .amoeba__inner-ring,
+  .amoeba__spikes,
+  .amoeba__spike {
+    animation: none;
+  }
+
+  .amoeba__halo {
+    opacity: 0.85;
+  }
+
+  .amoeba__spike {
+    opacity: 0.8;
+    transform: scaleY(0.8);
+  }
+}

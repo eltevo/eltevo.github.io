@@ -17,11 +17,9 @@ description: "Cosmology research group at Eötvös Loránd University (ELTE) in 
     </div>
 
     <figure class="home-hero__visual">
-      <img
-        src="{{ '/assets/images/projects/cylindrical-simulation/CylindricalExamplePoster.webp' | relative_url }}"
-        alt="Cosmic-web structure in a cylindrical StePS simulation"
-        width="1280"
-        height="720">
+      {% include amoeba.html
+        src="/assets/images/projects/cylindrical-simulation/CylindricalExamplePoster.webp"
+        alt="Cosmic-web structure in a cylindrical StePS simulation" %}
     </figure>
   </div>
   <div class="home-hero__marker" aria-hidden="true">S<sup>1</sup> × R<sup>2</sup></div>
