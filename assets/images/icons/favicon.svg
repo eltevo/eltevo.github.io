@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">ELTEVO</title>
+  <rect width="64" height="64" rx="12" fill="#0b121d"/>
+  <path d="M17 14h31v8H26v7h18v8H26v7h23v8H17z" fill="#eef4f8"/>
+  <circle cx="49" cy="17" r="4" fill="#72d5e5"/>
+</svg>
