@@ -36,7 +36,13 @@ To demonstrate the new simulation method, we run a new cosmological $N$-body sim
 ### Snapshots
 
 These files are the primary output of the Simulation. They are in GAGDET-compatible [HDF5](https://www.hdfgroup.org/solutions/hdf5/) format, and containing particle positions, velocities, masses, and IDs. Overall 138 snapshots were saved during the simulation. These can be visualized with [gadgetviewer](https://github.com/jchelly/gadgetviewer) or [topsy](https://github.com/pynbody/topsy).
- 
+
+<div class="mirror-set">
+  <p class="mirror-set__label">Download mirrors</p>
+  {% include mirror.html host="kooplex" label="All 138 snapshots" format="HDF5" filesize="1.5 GB / snapshot" %}
+  {% include mirror.html host="helsinki-sharepoint" label="Four selected snapshots" badge="Partial" format="HDF5" filesize="1.5 GB / snapshot" href="https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgCmwFcqlHBiTZ-Jdp1bfwV8AQq4NnzWcJJwmDV4h4-rn6o?e=GJVG1a" %}
+</div>
+
 <figure class="image video-figure">
   <video autoplay loop muted playsinline preload="metadata" poster="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Halos_0137.svg" data-ambient-video>
     <source src="/assets/images/projects/cylindrical-simulation/CylindricalExampleCenter.webm" type="video/webm">
@@ -44,27 +50,23 @@ These files are the primary output of the Simulation. They are in GAGDET-compati
   </video>
 </figure>
 
-**Uncompressed size:** 1.5 GB / snapshot
-
-**Mirrors**
-- ELTE Kooplex: [Download](https://datashare.vo.elte.hu/metalnx/). Use the username `anonymous` with no password.
-- helsinkifi-my.sharepoint.com (only 4 snapshots): [Download](https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgCmwFcqlHBiTZ-Jdp1bfwV8AQq4NnzWcJJwmDV4h4-rn6o?e=GJVG1a)
-
 ---
 
 ### Power spectra
+
+The isotropic $P(k)$ power spectrum of the dark matter density field is a standard statistic used to quantify the clustering. We estimated the power spectra from particle snapshots using the Feldman--Kaiser--Peacock (FKP) method.
+
+<div class="mirror-set">
+  <p class="mirror-set__label">Download mirrors</p>
+  {% include mirror.html host="kooplex" label="Power spectra of all snapshots" %}
+  {% include mirror.html host="helsinki-sharepoint" label="Power spectra of all snapshots" href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCfdHpygkwOQJM4R0hAF0a9ASukMk5devFf7r6rWDY6O6k?e=Sj8kEo" %}
+</div>
 
 <figure class="image">
   <button type="button" class="zoom-trigger">
     <img src="/assets/images/projects/cylindrical-simulation/LCDM_N24M_Sim_Pk_all.svg" alt="Real-space dark matter power spectra of all available snapshots">
   </button>
 </figure>
-
-The isotropic $P(k)$ power spectrum of the dark matter density field is a standard statistic used to quantify the clustering. We estimated the power spectra from particle snapshots using the Feldman--Kaiser--Peacock (FKP) method.
-
-**Mirrors**
-- ELTE Kooplex: [Download](https://datashare.vo.elte.hu/metalnx/). Use the username `anonymous` with no password.
-- helsinkifi-my.sharepoint.com: [Download](https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCfdHpygkwOQJM4R0hAF0a9ASukMk5devFf7r6rWDY6O6k?e=Sj8kEo)
 
 ---
 
@@ -119,20 +121,24 @@ These files contain all available information about the identified haloes. The h
   <!-- <figcaption>TODO: Figure caption does not work currently.</figcaption> -->
 </figure>
 
-**Mirrors**
-- ELTE Kooplex (ASCII): [Download](https://datashare.vo.elte.hu/metalnx/). Use the username `anonymous` with no password.
-- ELTE Kooplex (HDF5 + particles): [Download](https://datashare.vo.elte.hu/metalnx/). Use the username `anonymous` with no password.
-- helsinkifi-my.sharepoint.com (ASCII): [Download](https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgBQLQnqx65HQpL1rxNQcSkSAVktbtJeXylQ8VSCqGyjyiU?e=rdBary)
-- helsinkifi-my.sharepoint.com (HDF5 + particles): [Download](https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgATNo6G7U9UQIrlCrYaEt5hAcOt-QUn60tAH2EX2MpUfIE?e=D1nXgM)
+<div class="mirror-set">
+  <p class="mirror-set__label">Download mirrors</p>
+  {% include mirror.html host="kooplex" label="Halo catalogues" format="ASCII" %}
+  {% include mirror.html host="kooplex" label="Halo catalogues with particle data" format="HDF5" %}
+  {% include mirror.html host="helsinki-sharepoint" label="Halo catalogues" format="ASCII" href="https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgBQLQnqx65HQpL1rxNQcSkSAVktbtJeXylQ8VSCqGyjyiU?e=rdBary" %}
+  {% include mirror.html host="helsinki-sharepoint" label="Halo catalogues with particle data" format="HDF5" href="https://helsinkifi-my.sharepoint.com/:f:/g/personal/gracz_ad_helsinki_fi/IgATNo6G7U9UQIrlCrYaEt5hAcOt-QUn60tAH2EX2MpUfIE?e=D1nXgM" %}
+</div>
 
 ---
 
-### Notebooks:
+### Notebooks
 
-These [jupyter](https://jupyter.org/) notebooks contain examples of how to load, visualise, and analyse the provided simulation data. 
+These [jupyter](https://jupyter.org/) notebooks contain examples of how to load, visualise, and analyse the provided simulation data.
 
-**Mirrors**
-- helsinkifi-my.sharepoint.com: [Download](https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQDupYMDLIydQo0EVBhcySmeAQKA7DdEPfH7kNjuERpCIDk?e=5fpamf)
+<div class="mirror-set">
+  <p class="mirror-set__label">Download mirrors</p>
+  {% include mirror.html host="helsinki-sharepoint" label="Example notebooks" format="Jupyter" href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQDupYMDLIydQo0EVBhcySmeAQKA7DdEPfH7kNjuERpCIDk?e=5fpamf" %}
+</div>
 
 ## Companion simulations
 
@@ -141,12 +147,12 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
 <div class="table-wrapper">
 <table class="sim-table">
   <colgroup>
-    <col style="width: 18%;">  <!-- Run name -->
-    <col style="width: 16%;">  <!-- R_sim -->
-    <col style="width: 16%;">  <!-- L_z -->
-    <col style="width: 16%;">  <!-- N_p -->
-    <col style="width: 14%;">  <!-- Uncompressed Size -->
-    <col style="width: 20%;">  <!-- Download -->
+    <col class="col-run">
+    <col class="col-r">
+    <col class="col-lz">
+    <col class="col-np">
+    <col class="col-size">
+    <col class="col-download">
   </colgroup>
   <thead>
     <tr>
@@ -165,9 +171,9 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
       <td>$50.0\,\mathrm{Mpc}$</td>
       <td>$5.0\cdot10^5$</td>
       <td>441&nbsp;MB</td>
-      <td>
-        <a href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQDa4_cUufnTRoDVMhIuzq6sAV3KJ8Kv4Jyd3bsoYkz8XvM?e=52UEaj">
-          Download
+      <td class="col-download">
+        <a class="mirror__action mirror__action--compact" rel="noopener noreferrer" href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQDa4_cUufnTRoDVMhIuzq6sAV3KJ8Kv4Jyd3bsoYkz8XvM?e=52UEaj">
+          Download<span class="visually-hidden"> run Small #1 from University of Helsinki SharePoint, opens helsinkifi-my.sharepoint.com</span>
         </a>
       </td>
     </tr>
@@ -177,9 +183,9 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
       <td>$100.0\,\mathrm{Mpc}$</td>
       <td>$1.0\cdot10^6$</td>
       <td>840&nbsp;MB</td>
-      <td>
-        <a href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCs_FApczY7Q5lif0NxWDcFAYx2TUktwIeDCwHXJdJFZNM?e=3ousSP">
-          Download
+      <td class="col-download">
+        <a class="mirror__action mirror__action--compact" rel="noopener noreferrer" href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCs_FApczY7Q5lif0NxWDcFAYx2TUktwIeDCwHXJdJFZNM?e=3ousSP">
+          Download<span class="visually-hidden"> run Small #2 from University of Helsinki SharePoint, opens helsinkifi-my.sharepoint.com</span>
         </a>
       </td>
     </tr>
@@ -189,10 +195,10 @@ These $S^1\times\mathbb{R}^2$ simulations were run with the same code and cosmol
       <td>$200.0\,\mathrm{Mpc}$</td>
       <td>$2.0\cdot10^6$</td>
       <td>1730&nbsp;MB</td>
-      <td>
-        <a href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCP2rPKW-3wQLKuYMMDb2LdAQqYTQf0BmLjZJQ_4FP8Ijg?e=d60tRM">
-          Download
-       </a>
+      <td class="col-download">
+        <a class="mirror__action mirror__action--compact" rel="noopener noreferrer" href="https://helsinkifi-my.sharepoint.com/:u:/g/personal/gracz_ad_helsinki_fi/IQCP2rPKW-3wQLKuYMMDb2LdAQqYTQf0BmLjZJQ_4FP8Ijg?e=d60tRM">
+          Download<span class="visually-hidden"> run Small #3 from University of Helsinki SharePoint, opens helsinkifi-my.sharepoint.com</span>
+        </a>
       </td>
     </tr>
   </tbody>

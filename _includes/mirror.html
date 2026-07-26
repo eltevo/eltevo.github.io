@@ -1,0 +1,71 @@
+{%- comment -%}
+One download mirror row.
+
+Parameters (all optional except a destination):
+  host        key in `_data/mirrors.yml`; supplies name, domain, url and note
+  href        per-dataset deep link; falls back to the host's landing url
+  name        display name, overrides the registry
+  domain      destination domain shown to the reader, overrides the registry
+  label       what this mirror gives you, e.g. "All 138 snapshots"
+  format      chip, e.g. "HDF5"
+  filesize    chip, e.g. "1.5 GB / snapshot"; named `filesize` rather than
+              `size` because `include.size` is Liquid's hash-length command and
+              would report the number of parameters whenever it is unset
+  badge       short qualifier, e.g. "Partial"
+  note        access note, inline HTML allowed; overrides the registry
+  note_label  uppercase label of the note strip, defaults to "Note"
+  hide_note   set to true to suppress the host's registry note
+  action      call-to-action text, defaults to "Download"
+
+Rendered as a row whose whole surface is clickable, while the anchor itself
+stays on the pill so its accessible name stays short. The note strip is raised
+above the stretched link so its text remains selectable.
+
+`note` and `note_label` are seeded before the `unless` because Jekyll includes
+share the page scope: without the reset, a note assigned by an earlier call
+would leak into the next mirror on the same page.
+{%- endcomment -%}
+{%- assign mirror = site.data.mirrors[include.host] -%}
+{%- assign name = include.name | default: mirror.name | default: include.host -%}
+{%- assign domain = include.domain | default: mirror.domain -%}
+{%- assign href = include.href | default: mirror.url -%}
+{%- assign action = include.action | default: "Download" -%}
+{%- assign note = "" -%}
+{%- assign note_label = "Note" -%}
+{%- unless include.hide_note -%}
+  {%- assign note = include.note | default: mirror.note | default: "" -%}
+  {%- assign note_label = include.note_label | default: mirror.note_label | default: "Note" -%}
+{%- endunless -%}
+<div class="mirror">
+  <div class="mirror__head">
+    <span class="mirror__name">{{ name }}</span>
+    {%- if domain %}<span class="mirror__domain">{{ domain }}</span>{% endif -%}
+  </div>
+  <div class="mirror__meta">
+    {%- if include.label or include.badge %}
+    <p class="mirror__label">
+      {{- include.label -}}
+      {%- if include.badge %} <span class="mirror__badge">{{ include.badge }}</span>{% endif -%}
+    </p>
+    {%- endif -%}
+    {%- if include.format or include.filesize %}
+    <ul class="mirror__chips">
+      {%- if include.format %}<li>{{ include.format }}</li>{% endif -%}
+      {%- if include.filesize %}<li>{{ include.filesize }}</li>{% endif -%}
+    </ul>
+    {%- endif %}
+  </div>
+  <a class="mirror__action" href="{{ href }}" rel="noopener noreferrer">
+    {{- action -}}
+    <span class="visually-hidden">
+      {%- if include.label %} {{ include.label }}{% endif %} from {{ name }}
+      {%- if domain %}, opens {{ domain }}{% endif -%}
+    </span>
+  </a>
+  {%- if note != "" %}
+  <p class="mirror__note">
+    <span class="mirror__note-label">{{ note_label }}</span>
+    {{- " " }}{{ note }}
+  </p>
+  {%- endif %}
+</div>

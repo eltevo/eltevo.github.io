@@ -1,0 +1,25 @@
+# Download mirror hosts.
+#
+# Facts that repeat across articles live here once; per-dataset details (the
+# deep link, what the download contains, its size) stay next to the prose in
+# the article, passed as `{% include mirror.html %}` parameters.
+#
+# Keys:
+#   name        display name of the host
+#   domain      literal domain shown to the reader, so the destination is
+#               never a surprise
+#   url         landing page, used when a call site passes no `href`
+#   note        access note; inline HTML is allowed (Liquid does not escape it)
+#   note_label  short uppercase label for the note strip
+
+kooplex:
+  name: "ELTE Kooplex"
+  domain: "datashare.vo.elte.hu"
+  url: "https://datashare.vo.elte.hu/metalnx/"
+  note_label: "Sign in"
+  note: "Log in with the username <code>anonymous</code> and leave the password field empty."
+
+helsinki-sharepoint:
+  name: "University of Helsinki SharePoint"
+  domain: "helsinkifi-my.sharepoint.com"
+  url: "https://helsinkifi-my.sharepoint.com/"
