@@ -1,0 +1,68 @@
+{%- comment -%}
+The hero amoeba: an image seen through a slowly turning, breathing blob-shaped
+window, ringed by a double outline and a dial of rippling spikes.
+
+Parameters:
+  src   image path, run through `relative_url` here
+  alt   accessible name for the whole figure
+  id    id prefix for the internal <defs>, defaults to "amoeba". Only needs
+        overriding if a page renders this include more than once, since
+        duplicate ids would make every copy reference the first one's clip.
+
+Geometry (viewBox 480, centre 240,240): the blob reaches 203.4 units at its
+widest, which is exactly half of 480/1.18 -- the SVG is styled at `inset: -9%`
+so that radius lands on the figure box edge and the blob keeps the size the
+static version had. The remaining units out to 240 are the spike bezel. The
+outline is the blob path plus the same path offset 10 units outwards, so the
+two lines stay parallel to the silhouette. `_amoeba.scss` drives the motion.
+
+The blob path is declared once and pulled in with <use> so the clip window, the
+dark field behind the image and the inner outline cannot drift apart. Every
+spike is authored identically at twelve o'clock and swung into place by its
+wrapper's `transform` attribute; the wrapper exists because a CSS `transform`
+property overrides a `transform` attribute on the same element, so the wave
+animation would otherwise throw every spike back to the top of the dial.
+{%- endcomment -%}
+{%- assign uid = include.id | default: "amoeba" -%}
+<svg class="amoeba" viewBox="0 0 480 480" role="img" aria-labelledby="{{ uid }}-title">
+  <title id="{{ uid }}-title">{{ include.alt }}</title>
+  <defs>
+    <path id="{{ uid }}-blob" d="M432.45 240C427.12 273.59 413.56 303.83 396.31 330.25C379.06 356.66 357.41 380.01 330.75 397.19C304.09 414.37 272.22 424.45 240 424.61C207.78 424.78 175.91 415.45 147.68 399.91C119.44 384.36 94.05 362.85 74.21 335.72C54.38 308.59 40.66 274.95 39.75 240C38.83 205.05 51.53 169.97 73.36 143.79C95.19 117.62 124.55 100.66 153.15 89.57C181.75 78.48 209.86 71.56 240 67.31C270.14 63.07 303.69 62.52 336.22 73.34C368.76 84.15 398.78 107.35 416.12 138.32C433.46 169.29 437.78 206.41 432.45 240Z"/>
+    <path id="{{ uid }}-blob-outer" d="M442.45 240C437.12 275.33 423.1 307.32 404.97 335.25C386.84 363.17 363.92 387.79 335.75 405.85C307.58 423.9 273.97 434.45 240 434.61C206.03 434.78 172.43 424.99 142.68 408.57C112.93 392.15 86.26 369.36 65.55 340.72C44.84 312.08 30.66 276.7 29.75 240C28.83 203.3 42 166.48 64.7 138.79C87.41 111.11 118.03 92.87 148.15 80.91C178.26 68.94 208.12 61.56 240 57.31C271.88 53.07 307.17 52.98 341.22 64.68C375.27 76.37 406.56 100.84 424.78 133.32C442.99 165.8 447.78 204.67 442.45 240Z"/>
+    <clipPath id="{{ uid }}-clip">
+      <use class="amoeba__turn" href="#{{ uid }}-blob"/>
+    </clipPath>
+    <radialGradient id="{{ uid }}-halo">
+      <stop offset="0" stop-color="#72d5e5" stop-opacity="0.11"/>
+      <stop offset="0.44" stop-color="#72d5e5" stop-opacity="0.11"/>
+      <stop offset="0.6" stop-color="#72d5e5" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#72d5e5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <circle class="amoeba__halo" cx="240" cy="240" r="240" fill="url(#{{ uid }}-halo)"/>
+  <use class="amoeba__field amoeba__turn" href="#{{ uid }}-blob"/>
+
+  <image
+    class="amoeba__image"
+    href="{{ include.src | relative_url }}"
+    x="30"
+    y="30"
+    width="420"
+    height="420"
+    preserveAspectRatio="xMidYMid slice"
+    clip-path="url(#{{ uid }}-clip)"/>
+
+  <circle class="amoeba__inner-ring" cx="240" cy="240" r="148" pathLength="360"/>
+
+  <use class="amoeba__line amoeba__turn" href="#{{ uid }}-blob"/>
+  <use class="amoeba__line amoeba__line--outer amoeba__turn" href="#{{ uid }}-blob-outer"/>
+
+  <g class="amoeba__spikes">
+    {%- for i in (0..71) -%}
+      {%- assign angle = i | times: 5 -%}
+      {%- assign beat = i | modulo: 6 -%}
+      <g transform="rotate({{ angle }} 240 240)"><line class="amoeba__spike{% if beat == 0 %} amoeba__spike--major{% endif %}" style="--i: {{ i }}" x1="240" y1="21" x2="240" y2="10"/></g>
+    {%- endfor -%}
+  </g>
+</svg>
