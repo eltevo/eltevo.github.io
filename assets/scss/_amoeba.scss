@@ -30,8 +30,8 @@
   transform-box: view-box;
   transform-origin: 240px 240px;
   animation:
-    amoeba-turn 150s linear infinite,
-    amoeba-breathe 18s ease-in-out infinite;
+    amoeba-turn 30s linear infinite,
+    amoeba-breathe 3s ease-in-out infinite;
 }
 
 .amoeba__field {
@@ -44,7 +44,7 @@
 }
 
 .amoeba__halo {
-  animation: amoeba-halo 18s ease-in-out infinite;
+  animation: amoeba-halo 3s ease-in-out infinite;
 }
 
 .amoeba__line {
