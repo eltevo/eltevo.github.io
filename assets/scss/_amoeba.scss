@@ -75,34 +75,56 @@
   vector-effect: non-scaling-stroke;
 }
 
-.amoeba__spikes {
+// The whole wheel drifts against the blob's rotation and takes a slow breath
+// of its own, on the same rotate + scale property split as `.amoeba__turn`.
+.amoeba__rays {
   transform-box: view-box;
   transform-origin: 240px 240px;
-  animation: amoeba-turn-rev 220s linear infinite;
+  animation:
+    amoeba-turn-rev 240s linear infinite,
+    amoeba-breathe 21s ease-in-out infinite;
 }
 
-.amoeba__spike {
+// Couples each ray's base to the blob's breathe: same 3s clock and easing as
+// `amoeba-breathe` on `.amoeba__turn`, phase-locked by having no delay. The
+// scale anchors on the ray's own tip (--tip, set in the markup), so only the
+// base end moves; --bs is precomputed per ray so every base travels the same
+// 3.02 units the blob's 1.018 implies at the base ring -- see `amoeba.html`.
+// This is a separate element from the wave below because the two scaleY
+// animations need different transform-origins.
+.amoeba__ray-base {
+  transform-box: view-box;
+  transform-origin: 240px var(--tip);
+  animation: amoeba-base-breathe 3s ease-in-out infinite;
+}
+
+.amoeba__ray {
   transform-box: view-box;
 
-  // The base of every spike, which is what `scaleY` swings the length from.
-  transform-origin: 240px 21px;
-  stroke: rgba(173, 206, 226, 0.42);
+  // The base of every ray (r=168), which is what `scaleY` swings the length
+  // from.
+  transform-origin: 240px 72px;
+  stroke: rgba(173, 206, 226, 0.5);
   stroke-width: 1;
   stroke-linecap: round;
-  animation: amoeba-wave 12s ease-in-out infinite;
+  animation: amoeba-wave 15s ease-in-out infinite;
 
   // The crests have to travel a whole number of cycles around the ring or the
-  // wave shows a seam at twelve o'clock. 12s x 3 crests / 72 spikes = 0.5s;
+  // wave shows a seam at twelve o'clock. 15s x 3 crests / 72 rays = 0.625s;
   // change any one of those three numbers and this has to be recomputed.
-  animation-delay: calc(var(--i) * -0.5s);
+  animation-delay: calc(var(--i) * -0.625s);
   vector-effect: non-scaling-stroke;
 }
 
-// Every sixth spike reads as a major tick. `scale` is free here because the
-// wave drives `transform`, so the two multiply instead of overwriting.
-.amoeba__spike--major {
-  stroke: rgba(114, 213, 229, 0.62);
-  scale: 1 1.55;
+.amoeba__ray--bold {
+  stroke: rgba(114, 213, 229, 0.6);
+  stroke-width: 1.6;
+}
+
+// Accents are a subset of the bold rays; declared after `--bold` so the violet
+// stroke wins while the width carries over.
+.amoeba__ray--accent {
+  stroke: rgba(155, 140, 255, 0.65);
 }
 
 @keyframes amoeba-turn {
@@ -117,6 +139,9 @@
   }
 }
 
+// Also reused at 21s on `.amoeba__rays` for the wheel's slow breath. The ray
+// bases' 3s coupling depends on this amplitude: 1.018 here fixes the 3.02 in
+// `amoeba.html`'s --bs values.
 @keyframes amoeba-breathe {
   0%,
   100% {
@@ -125,6 +150,17 @@
 
   50% {
     scale: 1.018;
+  }
+}
+
+@keyframes amoeba-base-breathe {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(var(--bs));
   }
 }
 
@@ -139,29 +175,33 @@
   }
 }
 
+// The ray lengths already carry the waveform, so the pulse only modulates it
+// rather than flattening every ray to a stub.
 @keyframes amoeba-wave {
   0%,
   100% {
-    opacity: 0.4;
-    transform: scaleY(0.34);
+    opacity: 0.45;
+    transform: scaleY(0.55);
   }
 
   50% {
     opacity: 1;
-    transform: scaleY(1.1);
+    transform: scaleY(1.08);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   // The global blanket in `_base.scss` only collapses duration and iteration
-  // count, which would snap every layer onto its 100% keyframe -- spikes at
+  // count, which would snap every layer onto its 100% keyframe -- rays at
   // their shortest, halo at its dimmest. Stop the animations outright and pin a
-  // frame that was composed to be looked at.
+  // frame that was composed to be looked at. The core wrapper's scale and the
+  // ray rotations are transform attributes, untouched here.
   .amoeba__turn,
   .amoeba__halo,
   .amoeba__inner-ring,
-  .amoeba__spikes,
-  .amoeba__spike {
+  .amoeba__rays,
+  .amoeba__ray-base,
+  .amoeba__ray {
     animation: none;
   }
 
@@ -169,8 +209,8 @@
     opacity: 0.85;
   }
 
-  .amoeba__spike {
+  .amoeba__ray {
     opacity: 0.8;
-    transform: scaleY(0.8);
+    transform: scaleY(0.9);
   }
 }
