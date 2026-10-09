@@ -63,7 +63,7 @@ touch _deploy/.nojekyll
 ```sh
 npm run scss
 ```
-The `scss` script in [package.json](package.json) watches `assets/scss/main.scss` and compiles the single production bundle to `assets/css/main.css`. It runs in the foreground, so open a second terminal for Jekyll.
+The `scss` script in [package.json](package.json) watches `assets/scss/` and compiles each stylesheet there to a file of the same name in `assets/css/`. It runs in the foreground, so open a second terminal for Jekyll.
 
 2. Run Jekyll:
 ```sh
@@ -84,9 +84,47 @@ Site will be available at `http://localhost:4000`. This command also runs in the
 - Layouts: [_layouts/](_layouts/)
 - Includes: [_includes/](_includes/)
 - Site copy and publications: [_data/](_data/)
+- Plugins: [_plugins/](_plugins/)
 - Sass/SCSS sources: [assets/scss/](assets/scss/)
-- Compiled CSS bundle: `assets/css/main.css`
+- Compiled CSS: `assets/css/`, one file per stylesheet
 - Local fonts and licences: [assets/fonts/](assets/fonts/)
+
+### Stylesheets
+
+Sass compiles every file in `assets/scss/` whose name does not start with an underscore into a stylesheet of the same name. Files that do start with one (`_variables.scss`, `_base.scss`, ...) are partials: they produce no file of their own and are pulled in with `@use`.
+
+| Stylesheet | Contents | Linked by |
+| --- | --- | --- |
+| `default.css` | base styles, header, footer, buttons, links, tags | `default` layout, on every page |
+| `pages.css` | page title block, content surface, About page | `pages` layout |
+| `listings.css` | project and publication entries | home page, Projects, Publications, `project` layout |
+| `home.css` | home page sections and the hero figure | home page |
+| `project.css` | project articles, figures, zoom dialog | `project` layout |
+| `mirrors.css` | download mirrors | `project` layout |
+| `tables.css` | tables and catalogue field lists | `project` layout |
+| `not-found.css` | 404 page | 404 page |
+
+Sass does not delete output. After a stylesheet is renamed or removed, delete `assets/css/` and compile again, or the old file is copied into the built site.
+
+### Page-specific files
+
+The `default` layout links only `default.css`. Everything else reaches `<head>` through a `head:` key in front matter, which a layout or a page can set:
+
+```yaml
+---
+layout: pages
+title: "Page Title"
+head: |
+  <link rel="stylesheet" href="/assets/css/tables.css">
+  <script src="/assets/js/example.js" defer></script>
+---
+```
+
+[_plugins/head-extra.rb](_plugins/head-extra.rb) collects the `head:` blocks along the layout chain, outermost layout first, and adds the page's own block last. The page above gets `default.css`, then `pages.css` from the `pages` layout, then its own two lines. `head:` is inserted as written, without Liquid processing, so write each URL out in full.
+
+To style a new kind of page, add `assets/scss/<name>.scss`, create a layout on `default` whose `head:` links `/assets/css/<name>.css`, and use that layout.
+
+MathJax and the figure zoom script are switched separately, with `math` and `zoom` in front matter. `_config.yml` turns both on for every project. `math: true` works on any other page too; `zoom` depends on the dialog markup in the `project` layout.
 
 ### Adding new projects
 To add a new project, create a new Markdown file in the `_projects/` directory with the following front matter:
@@ -109,12 +147,10 @@ thumbnail:
 links:
   code: https://example.com
   data: https://example.com
-math: true
-zoom: true
 ---
 ```
 
-Projects are automatically listed on the Projects page. `featured: true` also places them on the homepage, while `published: false` excludes unfinished projects from production builds. Keep `title` and `summary` free of HTML and MathJax. Use `math` and `zoom` only when the project content needs those enhancements.
+Projects are automatically listed on the Projects page. `featured: true` also places them on the homepage, while `published: false` excludes unfinished projects from production builds. Keep `title` and `summary` free of HTML and MathJax. Every project page loads MathJax and the figure zoom script; add `math: false` or `zoom: false` to a project that does not need one.
 
 ### Adding publications
 
@@ -171,7 +207,7 @@ Per-dataset details stay next to the prose that describes them. Wrap one or more
 | `hide_note` | `true` suppresses the host's registry note |
 | `action` | call-to-action text, defaults to `Download` |
 
-`.mirror-set` spans the full width of `.project-article` and `.page-surface`, so it works in both projects and regular pages. For a download link inside a table cell, reuse the pill on its own: `<a class="mirror__action mirror__action--compact" …>`.
+`.mirror-set` spans the full width of `.project-article` and `.page-surface`, so it works in both projects and regular pages. The `project` layout links `mirrors.css`; a regular page that uses mirrors links it through `head:` (see [Page-specific files](#page-specific-files)). For a download link inside a table cell, reuse the pill on its own: `<a class="mirror__action mirror__action--compact" …>`.
 
 ### Updating group copy
 
@@ -188,6 +224,8 @@ eyebrow: "Optional section label"
 description: "Page summary used in the introduction and metadata."
 permalink: /page-url/
 ```
+
+A page that needs a stylesheet or script of its own declares it with `head:` (see [Page-specific files](#page-specific-files)).
 
 ### Adding new menu items
 Edit `_includes/navigation.html`. Use `aria-current="page"` for the active route rather than a visual-only class.
