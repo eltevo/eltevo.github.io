@@ -7,8 +7,8 @@
 // The paragraph and list selectors below are element-qualified so they outrank
 // the `.prose p` / `.prose ul` / `.prose li + li` rules in `_base.scss`, which
 // would otherwise reintroduce prose margins inside the component. Equal
-// specificity resolves in this file's favour because `main.scss` loads
-// `mirrors` after `base`.
+// specificity resolves in this file's favour because pages link `mirrors.css`
+// after `default.css`.
 p.mirror-set__label {
   margin-bottom: 0.35rem;
   color: var(--muted);

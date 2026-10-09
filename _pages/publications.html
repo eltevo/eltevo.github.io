@@ -4,6 +4,8 @@ title: Publications
 eyebrow: Research output
 description: "Selected papers associated with ELTEVO research projects."
 permalink: /publications/
+head: |
+  <link rel="stylesheet" href="/assets/css/listings.css">
 ---
 
 {% assign publications_by_year = site.data.publications | group_by: "year" | sort: "name" | reverse %}

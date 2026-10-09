@@ -4,6 +4,8 @@ title: Projects
 eyebrow: Research portfolio
 description: "Computational cosmology projects, simulation methods, software, and public research data from ELTEVO."
 permalink: /projects/
+head: |
+  <link rel="stylesheet" href="/assets/css/listings.css">
 ---
 
 {% assign featured_projects = site.projects | where: "featured", true | sort: "title" %}
