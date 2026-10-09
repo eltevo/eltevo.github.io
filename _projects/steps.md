@@ -13,7 +13,6 @@ tags:
   - N-body
 links:
   code: https://github.com/eltevo/steps
-math: false
 ---
 
 ## Overview

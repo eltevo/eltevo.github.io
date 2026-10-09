@@ -18,8 +18,6 @@ thumbnail:
 links:
   code: https://github.com/eltevo/steps
   data: "#download-links"
-math: true
-zoom: true
 ---
 
 ## Overview

@@ -13,5 +13,4 @@ tags:
   - N-body
 links:
   code: https://github.com/eltevo/stepsic
-math: false
 ---

@@ -49,4 +49,5 @@ defaults:
       type: projects
     values:
       layout: project
-      math: false
+      math: true
+      zoom: true
